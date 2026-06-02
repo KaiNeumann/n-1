@@ -217,34 +217,25 @@ class PortionRegistry:
 # Global registry
 Registry = PortionRegistry()
 
-# Predefined portions (German names with weights in grams/ml)
-becher = Registry.create_portion("becher")                    # Cup (variable)
-beutel = Registry.create_portion("beutel")                    # Bag (variable)
-dose = Registry.create_portion("dose")                        # Can (variable)
-eins = Registry.create_portion("eins")                        # One/piece (variable)
-esslöffel = Registry.create_portion("esslöffel", 15)          # Tablespoon (15g)
-flasche = Registry.create_portion("flasche", 1000)            # Bottle (1000ml)
-glas = Registry.create_portion("glas", 200)                   # Glass (200ml)
-handvoll = Registry.create_portion("handvoll")                # Handful (variable)
-kleine_flasche = Registry.create_portion("kleine_flasche", 330)  # Small bottle (330ml)
-kugel = Registry.create_portion("kugel")                      # Scoop (variable)
-packung = Registry.create_portion("packung")                  # Package (variable)
-pad = Registry.create_portion("pad")                          # Pad (variable)
-portion = Registry.create_portion("portion")                  # Portion (variable)
-pott = Registry.create_portion("pott", 200)                   # Pot (200ml)
-prise = Registry.create_portion("prise")                      # Pinch (variable)
-scheibe = Registry.create_portion("scheibe")                  # Slice (variable)
-schnapsglas = Registry.create_portion("schnapsglas", 20)      # Shot glass (20ml)
-schüssel = Registry.create_portion("schüssel")                # Bowl (variable)
-stück = Registry.create_portion("stück")                      # Piece (variable)
-tablette = Registry.create_portion("tablette")                # Tablet (variable)
-tafel = Registry.create_portion("tafel")                      # Bar (variable)
-tasse = Registry.create_portion("tasse", 150)                 # Cup (150ml)
-teelöffel = Registry.create_portion("teelöffel", 5)           # Teaspoon (5g)
-teller = Registry.create_portion("teller")                    # Plate (variable)
-topf = Registry.create_portion("topf")                        # Pot/container (variable)
-tüte = Registry.create_portion("tüte")                        # Bag/pouch (variable)
-zehe = Registry.create_portion("zehe")                        # Clove (variable)
+
+def _initialize_predefined_portions() -> None:
+    """Register the 27 predefined Portion objects from
+    knowledge/units/portions.jsonl. Each portion becomes a module-level
+    name (``scheibe``, ``becher``, ``flasche`` etc.) so callers can do
+    ``from blutwerte.foods import scheibe``.
+    """
+    from .portions_jsonl_loader import load_portions_from_jsonl
+    for p in load_portions_from_jsonl().values():
+        globals()[p["name"]] = Registry.create_portion(p["name"], p["weight_grams"])
+
+
+_initialize_predefined_portions()
+
+# Base units (Amount, not Portion — not "data", just base arithmetic helpers)
+gramm = Amount(1)
+kilo = Amount(1000)
+ml = Amount(1)
+liter = Amount(1000)
 
 # Predefined category defaults
 CategoryPortionDefaults.set("beer", flasche, 500)
