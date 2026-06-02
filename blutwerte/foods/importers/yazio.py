@@ -41,14 +41,14 @@ class YazioImporter(FoodImporter):
         """Yazio does not support API lookup."""
         raise NotImplementedError(
             "Yazio does not provide a public API. "
-            "Use migrated Yazio foods from blutwerte.foods.data.legacy.food_yazio_migrated"
+            "Use the Yazio foods in knowledge/foods/yazio.jsonl"
         )
-    
+
     def search(self, query: str, limit: int = 10) -> List[Food]:
         """Yazio does not support search."""
         raise NotImplementedError(
             "Yazio does not provide a public API. "
-            "Use migrated Yazio foods from blutwerte.foods.data.legacy.food_yazio_migrated"
+            "Use the Yazio foods in knowledge/foods/yazio.jsonl"
         )
     
     def import_from_dict(self, data: Dict[str, Any]) -> Food:
