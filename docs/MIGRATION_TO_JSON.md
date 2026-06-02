@@ -8,18 +8,25 @@ executed by `tools/migrate_to_json.py`.
 
 | Entity      | Source                                  | Count | Target                                        | Done |
 |-------------|-----------------------------------------|------:|-----------------------------------------------|------|
-| Medications | `blutwerte/medications/data/*.py`       |    13 | `knowledge/medications/medications.jsonl`     | ☐    |
-| Biomarkers  | `blutwerte/bloodtests/biomarkers_db.py` |    90 | `knowledge/biomarkers/biomarkers.jsonl`       | ☐    |
-| Foods (BLS curated) | `blutwerte/foods/data/legacy/food_bls_migrated.py` | 74 | `knowledge/foods/bls_curated.jsonl`  | ☐    |
-| Foods (BLS full)    | `blutwerte/foods/data/legacy/food_bls_german_migrated.py` | 7,140 | `knowledge/foods/bls.jsonl` | ☐    |
-| Foods (Swiss)       | `blutwerte/foods/data/legacy/food_naehrwertdaten_ch_migrated.py` | 1,092 | `knowledge/foods/swiss.jsonl` | ☐    |
-| Foods (OFF)         | `blutwerte/foods/data/legacy/food_openfoodfacts_manual_migrated.py` | 74 | `knowledge/foods/openfoodfacts.jsonl` | ☐    |
-| Foods (Yazio)       | `blutwerte/foods/data/legacy/food_yazio_migrated.py` | 8 | `knowledge/foods/yazio.jsonl`         | ☐    |
-| Foods (manual)      | `blutwerte/foods/data/legacy/food_other_manual_migrated.py` | 31 | `knowledge/foods/manual.jsonl`     | ☐    |
-| Foods (priority)    | `blutwerte/foods/data/{vegetables,fruits,dairy,grains,proteins/*}.py` | ~25 | `knowledge/foods/priority.jsonl` | ☐    |
-| Nutrients   | `blutwerte/foods/rdi.py`                |   80+ | `knowledge/nutrients.json`                    | ☐    |
+| Medications | `blutwerte/medications/data/*.py`       |    13 | `knowledge/medications/medications.jsonl`     | ✓    |
+| Biomarkers  | `blutwerte/bloodtests/biomarkers_db.py` |    99 | `knowledge/biomarkers/biomarkers.jsonl`       | ✓    |
+| Foods (BLS curated) | `blutwerte/foods/data/legacy/food_bls_migrated.py` | 74 | `knowledge/foods/bls_curated.jsonl`  | ✓    |
+| Foods (BLS full)    | `blutwerte/foods/data/legacy/food_bls_german_migrated.py` | 7,140 | `knowledge/foods/bls.jsonl` | ✓    |
+| Foods (Swiss)       | `blutwerte/foods/data/legacy/food_naehrwertdaten_ch_migrated.py` | 1,092 | `knowledge/foods/swiss.jsonl` | ✓    |
+| Foods (OFF)         | `blutwerte/foods/data/legacy/food_openfoodfacts_manual_migrated.py` | 74 | `knowledge/foods/openfoodfacts.jsonl` | ✓    |
+| Foods (Yazio)       | `blutwerte/foods/data/legacy/food_yazio_migrated.py` | 8 | `knowledge/foods/yazio.jsonl`         | ✓    |
+| Foods (manual)      | `blutwerte/foods/data/legacy/food_other_manual_migrated.py` | 31 | `knowledge/foods/manual.jsonl`     | ✓    |
+| Foods (priority)    | `blutwerte/foods/data/{vegetables,fruits,dairy,grains,proteins/*}.py` | 22 | `knowledge/foods/priority_*.jsonl` | ✓    |
+| Nutrients   | `blutwerte/foods/rdi.py`                |   80+ | `knowledge/nutrients.jsonl`                    | ☐    |
 | Activities  | `blutwerte/activities/data/common_activities.py` |   6 | `knowledge/activities.jsonl`                 | ☐    |
-| Units       | `blutwerte/foods/portions.py`           |    28 | `knowledge/units.json`                        | ☐    |
+| Units       | `blutwerte/foods/portions.py`           |    28 | `knowledge/units.jsonl`                       | ☐    |
+
+### Wired up (JSONL preferred, Python fallback)
+
+- `blutwerte/medications/jsonl_loader.py` + `_load_all_medications` prefers JSONL.
+- `blutwerte/bloodtests/jsonl_loader.py` + `_initialize_biomarkers` prefers JSONL.
+- `blutwerte/foods/jsonl_loader.py` + `FoodDatabase.load_all` prefers JSONL.
+- Python sources remain as `_python` fallbacks for at least one release.
 
 JSONL everywhere (one object per line), for uniform tooling and
 append-friendly edits. The principles doc is the source of truth on
