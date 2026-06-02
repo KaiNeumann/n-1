@@ -76,4 +76,5 @@ archive/**/*.xlsx
 
 # Patient data is local-only
 patients/*/private/
+patients/data/
 *.local.yaml
