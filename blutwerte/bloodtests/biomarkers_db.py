@@ -68,8 +68,17 @@ class BiomarkerDatabase:
         return list(self._biomarkers.keys())
     
     def _initialize_biomarkers(self):
-        """Initialize all biomarkers from collected data"""
-        
+        """Initialize all biomarkers. Prefers JSONL under knowledge/, falls back to Python."""
+        from .jsonl_loader import load_biomarkers_from_jsonl, load_biomarkers_from_python
+
+        loaded = load_biomarkers_from_jsonl()
+        if not loaded:
+            loaded = load_biomarkers_from_python()
+        for name, biomarker in loaded.items():
+            self._add(biomarker)
+
+    def _initialize_biomarkers_python(self):
+        """Legacy Python-authored biomarker definitions. Only used as fallback."""
         # =============================================================================
         # PHASE 2: HIGH IMPACT BIOMARKERS - Pancreatic and Cardiac Enzymes
         # Priority: 51-55 | Impact: HIGH | Guidelines: DGKL, ACG, ESC

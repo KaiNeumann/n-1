@@ -221,15 +221,21 @@ class FoodDatabase:
     
     def load_all(self) -> None:
         """
-        Load all food data modules.
-        
-        This loads foods from all data modules:
-        - vegetables
-        - fruits
-        - proteins
-        - dairy
-        - grains
+        Load all foods. Prefers JSONL under knowledge/foods/, falls back to Python.
         """
+        from .jsonl_loader import load_foods_from_jsonl, load_foods_from_python
+
+        loaded = load_foods_from_jsonl()
+        if not loaded:
+            loaded = load_foods_from_python()
+        for food in loaded.values():
+            try:
+                self.add(food)
+            except ValueError:
+                continue  # duplicate name from cross-source overlap
+
+    def _load_all_python(self) -> None:
+        """Legacy Python-authored food loader. Only used as fallback."""
         modules = [
             "blutwerte.foods.data.vegetables",
             "blutwerte.foods.data.fruits",
@@ -241,7 +247,7 @@ class FoodDatabase:
             "blutwerte.foods.data.dairy",
             "blutwerte.foods.data.grains",
         ]
-        
+
         for module in modules:
             try:
                 self.load_from_module(module)

@@ -51,19 +51,27 @@ class MedicationDatabase:
             self._load_all_medications()
     
     def _load_all_medications(self):
-        """Load all medication modules from the data package"""
+        """Load all medications. Prefers JSONL under knowledge/, falls back to Python."""
+        from .jsonl_loader import load_medications_from_jsonl, load_medications_from_python
+
+        loaded = load_medications_from_jsonl()
+        if not loaded:
+            loaded = load_medications_from_python()
+        for med in loaded.values():
+            self._add(med)
+
+    def _load_all_medications_python(self):
+        """Legacy Python-authored medication loader. Only used as fallback."""
         from . import data
-        
-        # Get all modules in the data package
+
         for importer, modname, ispkg in pkgutil.iter_modules(data.__path__, data.__name__ + "."):
-            if not ispkg:  # Only load modules, not subpackages
+            if not ispkg:
                 try:
                     module = importlib.import_module(modname)
                     self._load_module_medications(module)
                 except Exception as e:
                     print(f"Warning: Could not load module {modname}: {e}")
-        
-        # Also load from vitamins subpackage
+
         try:
             from .data import vitamins
             for importer, modname, ispkg in pkgutil.iter_modules(vitamins.__path__, vitamins.__name__ + "."):
@@ -74,8 +82,8 @@ class MedicationDatabase:
                     except Exception as e:
                         print(f"Warning: Could not load vitamin module {modname}: {e}")
         except ImportError:
-            pass  # Vitamins package not yet created
-    
+            pass
+
     def _load_module_medications(self, module):
         """Load medication definitions from a module"""
         # Look for medication creation functions (convention: create_<medication_name>())
