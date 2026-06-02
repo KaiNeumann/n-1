@@ -42,6 +42,8 @@ ENTITY_TARGETS: List[Tuple[str, Path, List[Path]]] = [
      [KNOWLEDGE_DIR / "activities" / "activities.jsonl"]),
     ("unit", SCHEMAS_DIR / "unit.schema.json",
      [KNOWLEDGE_DIR / "units" / "portions.jsonl"]),
+    ("portion_default", SCHEMAS_DIR / "portion_default.schema.json",
+     [KNOWLEDGE_DIR / "units" / "portion_category_defaults.jsonl"]),
     # Foods: one schema covers all 15 source files under knowledge/foods/
     ("food", SCHEMAS_DIR / "food.schema.json",
      sorted((KNOWLEDGE_DIR / "foods").glob("*.jsonl"))),

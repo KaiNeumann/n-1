@@ -237,31 +237,18 @@ kilo = Amount(1000)
 ml = Amount(1)
 liter = Amount(1000)
 
-# Predefined category defaults
-CategoryPortionDefaults.set("beer", flasche, 500)
-CategoryPortionDefaults.set("beer", kleine_flasche, 330)
-CategoryPortionDefaults.set("bread", scheibe, 25)
-CategoryPortionDefaults.set("cheese", scheibe, 20)
-CategoryPortionDefaults.set("yogurt", becher, 150)
-CategoryPortionDefaults.set("soup", teller, 250)
-CategoryPortionDefaults.set("pasta", teller, 210)
-CategoryPortionDefaults.set("water", flasche, 750)
-CategoryPortionDefaults.set("milk", glas, 200)
-CategoryPortionDefaults.set("meat", portion, 100)
-CategoryPortionDefaults.set("sausage", stück, 50)
-CategoryPortionDefaults.set("beverage", flasche, 500)
-CategoryPortionDefaults.set("snack", packung, 100)
-CategoryPortionDefaults.set("spread", esslöffel, 15)
-CategoryPortionDefaults.set("supplement", tablette, 1)
-CategoryPortionDefaults.set("fruit", portion, 150)
-CategoryPortionDefaults.set("vegetable", portion, 100)
-CategoryPortionDefaults.set("fish", portion, 120)
-CategoryPortionDefaults.set("cereal", becher, 50)
-CategoryPortionDefaults.set("rice", teller, 180)
-CategoryPortionDefaults.set("oil", esslöffel, 10)
-CategoryPortionDefaults.set("sweet", stück, 80)
-CategoryPortionDefaults.set("prepared", packung, 400)
-CategoryPortionDefaults.set("alcohol", glas, 40)
-CategoryPortionDefaults.set("legume", becher, 80)
-CategoryPortionDefaults.set("spices", teelöffel, 5)
-CategoryPortionDefaults.set("seafood", portion, 100)
+
+def _initialize_category_defaults() -> None:
+    """Populate ``CategoryPortionDefaults`` from
+    knowledge/units/portion_category_defaults.jsonl (27 rows).
+    Falls back to a hard-coded list if the JSONL is missing.
+    """
+    from .portions_jsonl_loader import load_category_defaults
+    for category, portion_name, amount in load_category_defaults():
+        portion = Registry.get_portion_by_name(portion_name)
+        if portion is None:
+            continue
+        CategoryPortionDefaults.set(category, portion, amount)
+
+
+_initialize_category_defaults()

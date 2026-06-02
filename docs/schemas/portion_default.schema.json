@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/KaiNeumann/n-1/main/docs/schemas/portion_default.schema.json",
+  "title": "n-1 Portion Category Default row",
+  "description": "JSON Schema for one category-default row in knowledge/units/portion_category_defaults.jsonl. Each row says: when a food in this category uses this portion, default to this many grams (or ml for liquids).",
+  "type": "object",
+  "required": ["id", "schema_version", "source", "category", "portion_name", "amount_grams"],
+  "properties": {
+    "id":            { "$ref": "_common.json#/$defs/n1_id" },
+    "schema_version": { "$ref": "_common.json#/$defs/schema_version" },
+    "source":        { "$ref": "_common.json#/$defs/source" },
+
+    "category":     { "type": "string", "minLength": 1, "description": "Food category (e.g. 'beer', 'bread', 'cheese')." },
+    "portion_name": { "type": "string", "minLength": 1, "description": "Portion name (e.g. 'flasche', 'scheibe'). Must match a name in portions.jsonl." },
+    "amount_grams": { "type": "number", "minimum": 0, "description": "Default amount in grams (or ml for liquids) for this portion within this category." }
+  },
+  "additionalProperties": true
+}

@@ -20,6 +20,7 @@ executed by `tools/migrate_to_json.py`.
 | Nutrients   | `core/foods/rdi.py`                |    10 | `knowledge/nutrients/nutrients.jsonl`         | ✓    |
 | Activities  | `core/activities/data/common_activities.py` |    58 | `knowledge/activities/activities.jsonl` | ✓    |
 | Units       | `core/foods/portions.py`           |    27 | `knowledge/units/portions.jsonl`              | ✓    |
+| Portion defaults | `core/foods/portions.py` (27 `set()` calls) | 27 | `knowledge/units/portion_category_defaults.jsonl` | ✓ |
 
 ### Wired up (JSONL preferred, Python fallback)
 
@@ -45,9 +46,8 @@ executed by `tools/migrate_to_json.py`.
 
 ### Open follow-ups
 
-- **Portion category defaults** (the 26 `CategoryPortionDefaults.set(...)`
-  calls in portions.py) are mutable runtime state, not static knowledge.
-  They were deliberately left in Python and not migrated.
+(none at present — all 6 entities, including portion category defaults,
+are JSONL-driven.)
 
 JSONL everywhere (one object per line), for uniform tooling and
 append-friendly edits. The principles doc is the source of truth on
@@ -78,7 +78,8 @@ Schema files live in `docs/schemas/`:
 - `food.schema.json`       — JSON Schema for one food row
 - `nutrient.schema.json`   — JSON Schema for one nutrient row
 - `activity.schema.json`   — JSON Schema for one activity row
-- `unit.schema.json`       — JSON Schema for one unit row
+- `unit.schema.json`       — JSON Schema for one unit (portion) row
+- `portion_default.schema.json` — JSON Schema for one category-default row
 
 (These are written alongside the JSONL files; converters write
 schema-bearing rows so validation is possible from day one.)

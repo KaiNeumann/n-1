@@ -11,7 +11,10 @@ Demonstrates:
 """
 
 import sys
-sys.path.insert(0, 'D:\\Personal Data\\Kai Uwe\\Documents\\Kai\\projects\\core')
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
 
 from datetime import date
 from core.patients.loader import load_patient

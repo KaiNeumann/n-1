@@ -2,15 +2,21 @@
 Basic tests for core library
 """
 
+from pathlib import Path
+
 import pytest
 from datetime import datetime
 from core import (
-    get_biomarker, 
-    search_biomarkers, 
+    get_biomarker,
+    search_biomarkers,
     list_biomarkers,
     Category,
     load_blood_tests
 )
+
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+BLUTBILD_CSV = REPO_ROOT / "patients" / "data" / "p001" / "blutbild.csv"
 
 
 def test_get_biomarker_by_name():
@@ -94,11 +100,11 @@ def test_gender_specific_ranges():
 def test_csv_loading():
     """Test CSV loading"""
     try:
-        history = load_blood_tests("blutbild.csv")
+        history = load_blood_tests(str(BLUTBILD_CSV))
         assert len(history.records) > 0
         assert len(history.list_biomarkers()) > 0
         assert len(history.list_dates()) > 0
-        
+
         # Test get_latest_value
         latest = history.get_latest_value("Cholesterin")
         assert latest is not None
@@ -110,9 +116,9 @@ def test_csv_loading():
 def test_timeline():
     """Test timeline functionality"""
     try:
-        history = load_blood_tests("blutbild.csv")
+        history = load_blood_tests(str(BLUTBILD_CSV))
         timeline = history.get_timeline("HbA1c")
-        
+
         if timeline:
             # Should be sorted by date
             dates = [t[0] for t in timeline]
@@ -124,9 +130,9 @@ def test_timeline():
 def test_get_records_for_date():
     """Test getting records for specific date"""
     try:
-        history = load_blood_tests("blutbild.csv")
+        history = load_blood_tests(str(BLUTBILD_CSV))
         dates = history.list_dates()
-        
+
         if dates:
             records = history.get_records_for_date(dates[0])
             assert len(records) > 0

@@ -73,12 +73,16 @@ class BloodTestHistory:
         """Load and parse the CSV file"""
         with open(self.filepath, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
-            
+
+            # Strip whitespace from fieldnames; many lab CSVs use ", "
+            # separators, which leaves spaces embedded in the header keys.
+            reader.fieldnames = [name.strip() for name in (reader.fieldnames or [])]
+
             # Get date columns (everything after 'Normalwert')
             fieldnames = reader.fieldnames or []
             date_columns = []
             found_normal = False
-            
+
             for col in fieldnames:
                 if found_normal:
                     try:
@@ -89,15 +93,15 @@ class BloodTestHistory:
                         pass
                 if col == 'Normalwert':
                     found_normal = True
-            
+
             self.dates = [d for _, d in date_columns]
-            
+
             # Parse each row
             for row in reader:
-                biomarker = row['Wert']
-                lab_id = row['Laborident']
-                unit = row['Einheit']
-                ref_range = row['Normalwert']
+                biomarker = row['Wert'].strip()
+                lab_id = row['Laborident'].strip()
+                unit = row['Einheit'].strip()
+                ref_range = row['Normalwert'].strip()
                 
                 # Parse each date column
                 for col_name, date in date_columns:

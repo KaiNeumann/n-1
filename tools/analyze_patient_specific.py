@@ -7,9 +7,10 @@ import csv
 import sys
 from datetime import datetime
 from collections import defaultdict
+from pathlib import Path
 
-# Add core to path
-sys.path.insert(0, 'D:\\Personal Data\\Kai Uwe\\Documents\\Kai\\projects\\core')
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
 
 from core.bloodtests import BiomarkerDatabase
 from core.bloodtests import Category
