@@ -1,0 +1,504 @@
+FooDB Enrichment Results
+==================================================
+
+Total foods processed: 1280
+Foods enriched: 473
+Total effects: 10465
+
+Enriched foods:
+------------------------------
+Bell Pepper: 28 biomarkers
+Broccoli: 29 biomarkers
+Kale: 27 biomarkers
+Potato: 28 biomarkers
+Spinach: 27 biomarkers
+Tomato: 29 biomarkers
+Avocado: 28 biomarkers
+Banana: 28 biomarkers
+Orange: 27 biomarkers
+Strawberry: 28 biomarkers
+Beef: 27 biomarkers
+Chicken Breast: 27 biomarkers
+Salmon: 10 biomarkers
+Egg: 28 biomarkers
+Lentils: 28 biomarkers
+Tofu: 25 biomarkers
+Cheddar Cheese: 11 biomarkers
+Milk: 10 biomarkers
+Yogurt: 15 biomarkers
+Brown Rice: 28 biomarkers
+Oats: 30 biomarkers
+Quinoa: 28 biomarkers
+Hafer ganzes Korn roh: 30 biomarkers
+Hafer Flocken: 30 biomarkers
+Gerste ganzes Korn roh: 28 biomarkers
+Reis poliert roh: 28 biomarkers
+Roggenbrot: 24 biomarkers
+Toastbrot weiss: 13 biomarkers
+Milch voll: 10 biomarkers
+Milch fettarm: 10 biomarkers
+Joghurt natur: 15 biomarkers
+Joghurt griechisch: 15 biomarkers
+Butter: 13 biomarkers
+Sahne: 13 biomarkers
+Emmentaler: 11 biomarkers
+Frischkäse: 13 biomarkers
+Mozzarella: 11 biomarkers
+Feta: 10 biomarkers
+Rindfleisch roh: 27 biomarkers
+Hähnchenbrust roh: 27 biomarkers
+Lachs roh: 10 biomarkers
+Thunfisch Dose: 13 biomarkers
+Kartoffel roh: 28 biomarkers
+Broccoli roh: 29 biomarkers
+Tomate roh: 29 biomarkers
+Gurke roh: 27 biomarkers
+Paprika rot roh: 28 biomarkers
+Zwiebel roh: 27 biomarkers
+Knoblauch roh: 27 biomarkers
+Salat grün roh: 28 biomarkers
+Apfel roh: 28 biomarkers
+Banane roh: 28 biomarkers
+Orange roh: 27 biomarkers
+Birne roh: 28 biomarkers
+Trauben roh: 28 biomarkers
+Erdbeeren roh: 28 biomarkers
+Bohnen weiss gekocht: 27 biomarkers
+Linsen gekocht: 28 biomarkers
+Mandeln: 29 biomarkers
+Butterschmalz: 13 biomarkers
+Schokolade vollmilch: 10 biomarkers
+Keks Butter: 13 biomarkers
+Weizenbrötchen: 28 biomarkers
+Amaretti Mandelgebäck: 29 biomarkers
+Apfel gedünstet abgetropft ohne Zugabe von Zucker: 28 biomarkers
+Apfel geschält getrocknet: 28 biomarkers
+Apfelkuchen hausgemacht gebacken mit Blätterteig: 28 biomarkers
+Apfelkuchen hausgemacht gebacken mit Kuchenteig: 28 biomarkers
+Apfelmus gezuckert Konserve: 28 biomarkers
+Apfelmus ungezuckert Konserve: 28 biomarkers
+Apfelsaft: 28 biomarkers
+Apfelwein 4 vol: 28 biomarkers
+Apfelwein 6 2 vol: 28 biomarkers
+Avocado roh: 28 biomarkers
+Banane gedörrt: 28 biomarkers
+Banane getrocknet: 28 biomarkers
+Baumnuss: 28 biomarkers
+Baumnussbrot: 28 biomarkers
+Baumnussöl: 28 biomarkers
+Berner Alpkäse: 13 biomarkers
+Berner Hobelkäse: 13 biomarkers
+Birne gedünstet abgetropft ohne Zugabe von Zucker: 28 biomarkers
+Birne getrocknet: 28 biomarkers
+Birne in Sirup Konserve abgetropft: 28 biomarkers
+Birne mit Süssungsmittel Konserve abgetropft: 28 biomarkers
+Birnenkuchen hausgemacht gebacken mit Blätterteig: 28 biomarkers
+Birnenkuchen hausgemacht gebacken mit Kuchenteig: 28 biomarkers
+Birnensaft: 28 biomarkers
+Birnenweggen: 28 biomarkers
+Blätterteig hausgemacht Butter ungebacken: 13 biomarkers
+Blattgemüse Durchschnitt exkl Salate gedämpft ohne Zugabe von Salz: 28 biomarkers
+Blattgemüse Durchschnitt exkl Salate gedünstet ohne Zugabe von Salz und Fett: 28 biomarkers
+Blattgemüse Durchschnitt exkl Salate gekocht ohne Zugabe von Salz und Fett: 28 biomarkers
+Blattsalat Durchschnitt roh: 28 biomarkers
+Blauschimmelkäse Durchschnitt: 13 biomarkers
+Blumenkohl gedämpft ohne Zugabe von Salz: 29 biomarkers
+Blumenkohl roh: 29 biomarkers
+Bohne alle Arten gekocht ohne Zugabe von Fett und Salz: 27 biomarkers
+Bohne alle Arten getrocknet: 27 biomarkers
+Bohne grün gedämpft ohne Zugabe von Salz: 27 biomarkers
+Bohne grün getrocknet: 27 biomarkers
+Bohne grün roh: 27 biomarkers
+Branchli Milchschokolade mit Haselnusscrèmefüllung: 10 biomarkers
+Bratbutter: 13 biomarkers
+Buchweizen Korn geschält: 28 biomarkers
+Buchweizenmehl: 28 biomarkers
+Bündner Gerstensuppe: 28 biomarkers
+Burger mit Fisch: 13 biomarkers
+Buttergipfeli hell: 13 biomarkers
+Buttergipfeli Vollkorn: 13 biomarkers
+Buttermilch: 10 biomarkers
+Butterweggli: 13 biomarkers
+Butterzopf: 13 biomarkers
+Butterzopf Vollkorn: 13 biomarkers
+Cannelloni mit Spinat Ricotta Füllung zubereitet: 27 biomarkers
+Cashewnuss: 28 biomarkers
+Chinakohl gedünstet ohne Zugabe von Fett und Salz: 29 biomarkers
+Chinakohl roh: 29 biomarkers
+Coleslaw Salat zubereitet: 28 biomarkers
+Dörrbohne eingeweicht gedämpft ohne Zugabe von Salz: 27 biomarkers
+Dulce de Leche: 11 biomarkers
+Eierlikör 16 5 vol: 28 biomarkers
+Eieromeletten mit Käse zubereitet: 13 biomarkers
+Eieromeletten mit Schinken zubereitet: 28 biomarkers
+Eieromeletten mit Speck zubereitet: 28 biomarkers
+Eieromeletten zubereitet: 28 biomarkers
+Eierschwamm gedünstet ohne Zugabe von Fett und Salz: 28 biomarkers
+Eierschwamm roh: 28 biomarkers
+Eisbergsalat roh: 28 biomarkers
+Emmentaler vollfett: 11 biomarkers
+Engadiner Nusstorte: 28 biomarkers
+Erbsen und Karotten Konserve: 28 biomarkers
+Erbsen und Karotten Konserve aufgewärmt ohne Zugabe von Salz: 28 biomarkers
+Erdbeere roh: 28 biomarkers
+Erdnuss: 28 biomarkers
+Erdnuss Flips: 28 biomarkers
+Erdnuss geröstet gesalzen: 28 biomarkers
+Erdnussbutter: 13 biomarkers
+Erdnussöl: 28 biomarkers
+Essig Öl Salatsauce hausgemacht mit Rapsöl: 28 biomarkers
+Federkohl gedünstet ohne Zugabe von Salz und Fett: 29 biomarkers
+Federkohl roh: 29 biomarkers
+Fisch Durchschnitt Filet gedämpft ohne Zusatz von Fett und Salz: 13 biomarkers
+Fisch Durchschnitt roh: 13 biomarkers
+Fischstäbchen paniert und vorfritiert gebraten in HOLL Rapsöl: 13 biomarkers
+Fischstäbchen paniert und vorfritiert im Ofen gebacken ohne Zugabe von Fett: 13 biomarkers
+Fischstäbchen paniert und vorfritiert: 13 biomarkers
+Fleischkäse: 13 biomarkers
+Forelle ganz gekocht ohne Zusatz von Fett und Salz: 13 biomarkers
+Forelle roh: 13 biomarkers
+Frischkäse Doppelrahm: 13 biomarkers
+Gehacktes Durchschnitt aus Rind Kalb Schwein Poulet gebraten ohne Zusatz von Fett und Salz: 27 biomarkers
+Gehacktes Durchschnitt aus Rind Kalb Schwein Poulet roh: 27 biomarkers
+Gerstenflocken: 28 biomarkers
+Geschnetzeltes Durchschnitt aus Rind Kalb Schwein Geflügel gebraten ohne Zusatz von Fett und Salz: 27 biomarkers
+Geschnetzeltes Durchschnitt aus Rind Kalb Schwein Geflügel roh: 27 biomarkers
+Granatapfel roh: 28 biomarkers
+Griessbrei zubereitet mit teilentrahmter Milch ohne Zugabe von Zucker: 10 biomarkers
+Griessbrei zubereitet mit Vollmilch ohne Zugabe von Zucker: 10 biomarkers
+Griessschnitte zubereitet mit teilentrahmter Milch: 10 biomarkers
+Griessschnitte zubereitet mit Vollmilch: 10 biomarkers
+Gurke in Essig eingelegt: 27 biomarkers
+Hackplätzli Rind gebraten in Rapsöl HOLL: 27 biomarkers
+Haferbrei zubereitet mit teilentrahmter Milch ohne Zugabe von Zucker: 30 biomarkers
+Haferbrei zubereitet mit Vollmilch ohne Zugabe von Zucker: 30 biomarkers
+Haferflocken: 30 biomarkers
+Haferkleie: 30 biomarkers
+Halbentrahmte Milch 1 5 Fett UHT: 10 biomarkers
+Halbfettbutter: 13 biomarkers
+Hart und Halbhartkäse vollfett Durchschnitt: 13 biomarkers
+Hartweizengriess trocken: 28 biomarkers
+Haselnuss: 28 biomarkers
+Haselnuss Schokolade Brotaufstrich: 28 biomarkers
+Haselnusskekse: 28 biomarkers
+Haselnussmakrone: 28 biomarkers
+Haselnussöl: 28 biomarkers
+Haselnussstängeli: 28 biomarkers
+Hefeteig mit Butter süss ungebacken: 13 biomarkers
+Himbeere roh: 28 biomarkers
+Hummus: 12 biomarkers
+Hüttenkäse nature: 13 biomarkers
+Instant Kartoffelstock zubereitet mit Wasser und Butter: 13 biomarkers
+Joghurt Salatsauce ohne Öl: 15 biomarkers
+Joghurt Bifidus nature: 15 biomarkers
+Joghurt gezuckert Durchschnitt: 15 biomarkers
+Joghurt mit Aroma mager mit Süssstoffen: 15 biomarkers
+Joghurt mit Früchten mager mit Süssstoffen: 15 biomarkers
+Joghurt Erdbeer: 15 biomarkers
+Joghurt Haselnuss: 15 biomarkers
+Joghurt Mokka: 15 biomarkers
+Joghurt Mokka Bio: 15 biomarkers
+Joghurt nature: 15 biomarkers
+Joghurt nature mager: 15 biomarkers
+Joghurt Schokolade: 15 biomarkers
+Joghurt Vanille: 15 biomarkers
+Joghurtalternative aus Soja mit Früchten oder Aroma: 15 biomarkers
+Joghurtalternative aus Soja mit Früchten oder Aroma mit Calcium angereichert: 15 biomarkers
+Joghurtalternative aus Soja nature: 15 biomarkers
+Joghurtalternative aus Soja nature mit Calcium angereichert: 15 biomarkers
+Kakaobutter: 13 biomarkers
+Karotte gedämpft ohne Zugabe von Salz: 28 biomarkers
+Karotte roh: 28 biomarkers
+Karottensaft: 28 biomarkers
+Kartoffel geschält gedämpft ohne Zugabe von Salz: 28 biomarkers
+Kartoffel geschält roh: 28 biomarkers
+Kartoffelflocken mit Milchpulver und Salz Instant Kartoffelstock: 10 biomarkers
+Kartoffelgratin dauphinois zubereitet: 28 biomarkers
+Kartoffelgratin Savoyer Art zubereitet: 28 biomarkers
+Kartoffelsalat mit Essig Öl Sauce: 28 biomarkers
+Kartoffelsalat mit Mayonnaise Joghurt Sauce: 15 biomarkers
+Kartoffelstärke: 28 biomarkers
+Kartoffelstock zubereitet mit Rahm und Butter: 13 biomarkers
+Kartoffelstock zubereitet mit teilentrahmter Milch und Butter: 10 biomarkers
+Kartoffelstock zubereitet mit Vollmilch und Butter: 10 biomarkers
+Käse in Salzlake Kuhmilch: 10 biomarkers
+Käse in Salzlake Schaf und Ziegenmilch: 10 biomarkers
+Käsekuchen gebacken mit Blätterteig: 13 biomarkers
+Käsekuchen gebacken mit Kuchenteig: 13 biomarkers
+Käsereibutter: 13 biomarkers
+Käseschnitte zubereitet: 13 biomarkers
+Ketchup: 16 biomarkers
+Kiwi roh: 28 biomarkers
+Kochbutter: 13 biomarkers
+Kohlgemüse Durchschnitt gekocht ohne Zugabe von Salz und Fett: 29 biomarkers
+Kohlgemüse Durchschnitt roh: 29 biomarkers
+Kohlrabi gedämpft ohne Zugabe von Salz: 29 biomarkers
+Kohlrabi roh: 27 biomarkers
+Kokosnuss: 28 biomarkers
+Kokosnuss getrocknet Kokosrapseln Kokosflocken: 28 biomarkers
+Kokosnussmilch: 10 biomarkers
+Kondensmilch gezuckert: 10 biomarkers
+Kondensmilch ungezuckert: 10 biomarkers
+Kopfsalat roh: 28 biomarkers
+Kuchenteig mit Butter ungebacken: 13 biomarkers
+Kuchenteig Vollkorn mit Butter ungebacken: 13 biomarkers
+Lachs geräuchert: 10 biomarkers
+Lachs Wildfang roh: 10 biomarkers
+Lachs Zucht Filet gedämpft ohne Zusatz von Fett und Salz: 10 biomarkers
+Lachs Zucht roh: 10 biomarkers
+Leber Durchschnitt aus Rind Kalb Schwein gebraten ohne Zusatz von Fett und Salz: 27 biomarkers
+Leber Durchschnitt aus Rind Kalb Schwein roh: 27 biomarkers
+Linse ganz gekocht ohne Zugabe von Fett und Salz: 28 biomarkers
+Linse ganz getrocknet: 28 biomarkers
+Linse geschält gekocht ohne Zugabe von Fett und Salz: 28 biomarkers
+Linse geschält getrocknet: 28 biomarkers
+Magermilch UHT: 10 biomarkers
+Magermilchpulver: 10 biomarkers
+Mais Chips Apérogebäck: 28 biomarkers
+Mais gedämpft ohne Zugabe von Salz: 28 biomarkers
+Mais roh: 28 biomarkers
+Maisgriess gekocht: 28 biomarkers
+Maisgriess trocken: 28 biomarkers
+Maiskeimöl: 28 biomarkers
+Maiskölbchen in Essig eingelegt: 28 biomarkers
+Maisstärke: 28 biomarkers
+Malzgetränk mit Kakao Vitamine und Mineralien angereichert zubereitet mit Milch: 10 biomarkers
+Mandel: 29 biomarkers
+Mandel geröstet gesalzen: 29 biomarkers
+Mandel ohne Fett geröstet gesalzen: 29 biomarkers
+Mango roh: 28 biomarkers
+Margarine: 13 biomarkers
+Marzipan: 13 biomarkers
+Mehlomeletten mit Käse zubereitet: 13 biomarkers
+Meringue: 13 biomarkers
+Milch Durchschnitt: 10 biomarkers
+Milchkaffee dunkel ungezuckert: 10 biomarkers
+Milchkaffee hell ungezuckert: 10 biomarkers
+Milchkaffee ungezuckert: 10 biomarkers
+Milchreis zubereitet mit teilentrahmter Milch ohne Zugabe von Zucker: 28 biomarkers
+Milchreis zubereitet mit Vollmilch ohne Zugabe von Zucker: 28 biomarkers
+Milchschokolade: 10 biomarkers
+Milchschokolade mit Alkoholfüllung: 10 biomarkers
+Milchschokolade mit Crèmefüllung Gianduja Nougat: 10 biomarkers
+Milchschokolade mit Mandel Honig Nougat: 10 biomarkers
+Milchschokolade mit Nüssen: 10 biomarkers
+Milchschokolade mit Weinbeeren Nüssen und Mandeln: 10 biomarkers
+Mürbeteig mit Butter süss gebacken: 13 biomarkers
+Mürbeteig mit Butter süss ungebacken: 13 biomarkers
+Nussgipfel aus Blätterteig: 28 biomarkers
+Nussgipfel aus Hefeteig: 28 biomarkers
+Nüsslisalat roh: 28 biomarkers
+Nussschnecke aus Hefeteig: 28 biomarkers
+Orangeat: 27 biomarkers
+Orangennektar: 27 biomarkers
+Orangensaft: 27 biomarkers
+Paprika Gewürz: 28 biomarkers
+Paranuss: 28 biomarkers
+Parmesan: 11 biomarkers
+Plätzli Durchschnitt aus Geflügel Kalb Rind Schwein gebraten ohne Zusatz von Fett und Salz: 27 biomarkers
+Plätzli Durchschnitt aus Rind Kalb Schwein Geflügel paniert gebraten: 27 biomarkers
+Plätzli Durchschnitt aus Rind Kalb Schwein Geflügel roh: 27 biomarkers
+Polenta nera aus Maisgriess und Buchweizenmehl gekocht: 28 biomarkers
+Popcorn: 13 biomarkers
+Preiselbeere roh: 28 biomarkers
+Quinoa gekocht ohne Zugabe von Salz und Fett: 28 biomarkers
+Quinoa roh: 28 biomarkers
+Raclettekäse: 13 biomarkers
+Reibkäse: 13 biomarkers
+Reis parboiled gekocht in Salzwasser unjodiert: 28 biomarkers
+Reis parboiled trocken: 28 biomarkers
+Reis poliert gekocht in Salzwasser unjodiert: 28 biomarkers
+Reis poliert trocken: 28 biomarkers
+Reis unpoliert gekocht in Salzwasser unjodiert: 28 biomarkers
+Reis unpoliert trocken: 28 biomarkers
+Reisgetränk nature: 28 biomarkers
+Rind Brust gekocht ohne Zugabe von Fett und Salz: 27 biomarkers
+Rind Brust roh: 27 biomarkers
+Rind Eckstück roh: 27 biomarkers
+Rind Entrec te medium gebraten ohne Zusatz von Fett und Salz: 27 biomarkers
+Rind Entrec te roh: 27 biomarkers
+Rind Filet medium gebraten ohne Zustatz von Fett und Salz: 27 biomarkers
+Rind Filet roh: 27 biomarkers
+Rind Gehacktes gebraten ohne Zusatz von Fett und Salz: 27 biomarkers
+Rind Gehacktes roh: 27 biomarkers
+Rind Geschnetzeltes roh: 27 biomarkers
+Rind Hals roh: 27 biomarkers
+Rind Hohrücken roh: 27 biomarkers
+Rind Leber roh: 27 biomarkers
+Rind Runder Mocken roh: 27 biomarkers
+Rind Schulter Braten medium im Ofen gebraten ohne Zugabe von Fett und Salz: 27 biomarkers
+Rind Schulter Braten rare im Ofen gebraten ohne Zugabe von Fett und Salz: 27 biomarkers
+Rind Schulter Braten well done im Ofen gebraten ohne Zugabe von Fett und Salz: 27 biomarkers
+Rind Schulter Braten roh: 27 biomarkers
+Rind Siedfleisch durchzogen roh: 27 biomarkers
+Rind Siedfleisch durchzogen gekocht ohne Zusatz von Fett und Salz: 27 biomarkers
+Rind Siedfleisch mager gekocht ohne Zusatz von Fett and Salz: 27 biomarkers
+Rind Siedfleisch mager roh: 27 biomarkers
+Rind Voressen roh: 27 biomarkers
+Rind Zunge roh: 27 biomarkers
+Rindfleisch Durchschnitt exkl Innereien Rippensteak roh: 27 biomarkers
+Rindsragout mit Sauce zubereitet: 27 biomarkers
+Risotto ohne Käse gekocht: 13 biomarkers
+Roggenbrot mit Sauerteig: 24 biomarkers
+Rollgerste: 28 biomarkers
+Rosenkohl gedämpft ohne Zugabe von Salz: 29 biomarkers
+Rosenkohl roh: 29 biomarkers
+Rotkohl gedünstet ohne Zugabe von Fett und Salz: 29 biomarkers
+Rotkohl roh: 29 biomarkers
+Rührei mit Käse zubereitet: 13 biomarkers
+Russischer Salat zubereitet: 28 biomarkers
+Sablé Butter: 13 biomarkers
+Salatsauce französisch hausgemacht mit Rapsöl: 28 biomarkers
+Salatsauce italienisch hausgemacht mit Olivenöl: 28 biomarkers
+Salatsauce französisch: 28 biomarkers
+Salatsauce italienisch: 28 biomarkers
+Sandwich Baguette mit Fleischkäse: 13 biomarkers
+Sandwich Baguette mit Halbhartkäse: 13 biomarkers
+Sandwich Baguette mit Mozzarella: 11 biomarkers
+Sandwich Baguette mit Weichkäse: 13 biomarkers
+Sandwich Ruchbrot mit Fleischkäse: 13 biomarkers
+Sandwich Ruchbrot mit Halbhartkäse: 13 biomarkers
+Sandwich Ruchbrot mit Mozzarella: 11 biomarkers
+Sandwich Ruchbrot mit Weichkäse: 13 biomarkers
+Schafmilch: 10 biomarkers
+Schmelzkäse Scheibe Rahm: 13 biomarkers
+Schmelzkäse Scheibe viertelfett: 13 biomarkers
+Schmelzkäse Scheibe vollfett: 13 biomarkers
+Schmelzkäse streichfähig Rahm: 13 biomarkers
+Schmelzkäse streichfähig viertelfett: 13 biomarkers
+Schmelzkäse streichfähig vollfett: 13 biomarkers
+Seelachs roh: 10 biomarkers
+Siedfleischsalat zubereitet: 28 biomarkers
+Silberzwiebel in Essig eingelegt: 27 biomarkers
+Sojabohne gekocht ohne Zugabe von Fett und Salz: 27 biomarkers
+Sojabohne getrocknet: 27 biomarkers
+Spinat gedämpft ohne Zugabe von Salz: 27 biomarkers
+Spinat roh: 27 biomarkers
+Spinatkuchen gebacken mit Blätterteig: 27 biomarkers
+Spinatkuchen gebacken mit Kuchenteig: 27 biomarkers
+Süsskartoffel gedämpft ohne Zugabe von Salz: 28 biomarkers
+Süsskartoffel roh: 28 biomarkers
+Teigwaren frisch gefüllt mit Spinat und Ricotta gekocht ohne Zugabe von Fett und Salz: 27 biomarkers
+Teigwaren frisch gefüllt mit Spinat und Ricotta roh: 27 biomarkers
+Teigwarensalat mit französischer Sauce: 28 biomarkers
+Teigwarensalat mit italienischer Sauce: 28 biomarkers
+Teilentrahmte Milch pasteurisiert: 10 biomarkers
+Teilentrahmte Milch UHT: 10 biomarkers
+Thonsalat an Essig Öl Sauce aus Thon im Wasser: 28 biomarkers
+Thunfisch roh: 13 biomarkers
+Tilsiter Rohmilch vollfett: 10 biomarkers
+Toastbrot mit Butter: 13 biomarkers
+Toastbrot mit Pflanzenölen: 13 biomarkers
+Toastbrot Vollkorn: 13 biomarkers
+Toastbrot dunkel oder Mehrkorn: 13 biomarkers
+Tofu fest nature: 25 biomarkers
+Tofu geräuchert: 25 biomarkers
+Tofu seidig weich nature: 25 biomarkers
+Tomate gedünstet ohne Zugabe von Fett und Salz: 29 biomarkers
+Tomate geschält Konserve: 29 biomarkers
+Tomate getrocknet: 29 biomarkers
+Tomatenkuchen gebacken mit Blätterteig: 29 biomarkers
+Tomatenkuchen gebacken mit Kuchenteig: 29 biomarkers
+Tomatenpüree: 29 biomarkers
+Tomatensaft: 29 biomarkers
+Tomatensauce: 29 biomarkers
+Tomatensuppe: 29 biomarkers
+Traube weiss roh: 28 biomarkers
+Traubenkernöl: 28 biomarkers
+Traubensaft: 28 biomarkers
+Traubenzucker: 28 biomarkers
+Vollkornreiswaffel: 28 biomarkers
+Vollmilch pasteurisiert: 10 biomarkers
+Vollmilch UHT: 10 biomarkers
+Vollmilchpulver: 10 biomarkers
+Vorzugsbutter: 13 biomarkers
+Walliser Roggenbrot: 24 biomarkers
+Wassereis: 28 biomarkers
+Weichkäse Durchschnitt ohne fettreduzierte Varianten: 13 biomarkers
+Weichkäse Doppelrahm: 13 biomarkers
+Weichkäse Rahm: 13 biomarkers
+Weichkäse vollfett: 13 biomarkers
+Weisskohl gedämpft ohne Zugabe von Salz: 29 biomarkers
+Weisskohl gedünstet ohne Zugabe von Fett und Salz: 29 biomarkers
+Weisskohl roh: 29 biomarkers
+Weizen Weichweizen ganzes Korn: 28 biomarkers
+Weizenflocken Vollkorn: 28 biomarkers
+Weizenkeime: 28 biomarkers
+Weizenkeimöl: 28 biomarkers
+Weizenkleie: 28 biomarkers
+Weizenmehl Backmehl Typ 550: 28 biomarkers
+Weizenmehl halbweiss Typ 720: 28 biomarkers
+Weizenmehl Ruch Typ 1100: 28 biomarkers
+Weizenmehl Vollkorn Typ 1700: 28 biomarkers
+Weizenmehl weiss Typ 400: 28 biomarkers
+Weizenotto gekocht: 28 biomarkers
+Weizenstärke: 28 biomarkers
+Wurst Käse Salat zubereitet: 13 biomarkers
+Wurstsalat zubereitet: 28 biomarkers
+Ziegenmilch: 10 biomarkers
+Zitrone roh: 27 biomarkers
+Zitronensaft: 27 biomarkers
+Zuckerhutsalat roh: 28 biomarkers
+Zuckermais Konserve: 28 biomarkers
+Zuckermais Konserve aufgewärmt ohne Zugabe von Salz: 28 biomarkers
+Zunge Durchschnitt aus Kalb und Rind roh: 27 biomarkers
+Zwieback: 23 biomarkers
+Zwiebel gedünstet ohne Zugabe von Fett und Salz: 27 biomarkers
+Zwiebel geröstet ohne Zugabe von Fett und Salz: 27 biomarkers
+Zwiebelkuchen gebacken mit Blätterteig: 27 biomarkers
+Zwiebelkuchen gebacken mit Kuchenteig: 27 biomarkers
+andechser bio rahmjoghurt vanille: 15 biomarkers
+andechser bio rahmjoghurt heidelbeere: 15 biomarkers
+baguette kräuterbutter: 13 biomarkers
+bayerischer meerrettich alpensahne: 13 biomarkers
+bio feta: 10 biomarkers
+bio streichcreme paprika aubergine zucchini und tomate: 29 biomarkers
+erdnussbutter peanut butter creamy: 13 biomarkers
+feta griechisch: 10 biomarkers
+gemüse brotaufstrich kirschtomate rucola: 29 biomarkers
+handkäse kümmel: 13 biomarkers
+iglo brokkoli buchweizen: 29 biomarkers
+joghurt griechische art: 15 biomarkers
+k classic knuspriger apfelstrudel: 28 biomarkers
+kaufland langkorn wildreis mischung: 28 biomarkers
+knoblauch baguette: 27 biomarkers
+lachsfilets naturbelassen: 10 biomarkers
+patros feta aus griechischer schafsmilch: 10 biomarkers
+rewe bio bergkäse: 13 biomarkers
+rewe bio frischkäse: 13 biomarkers
+tegut bio haltbare vollmilch: 10 biomarkers
+veganer fleischfreisalat: 28 biomarkers
+weizen mischbrot: 28 biomarkers
+demeter bio zuckermais: 28 biomarkers
+https://www.dennree.de/dennree-produkte/uebersicht/hartweizen-vollkorn/vollkorn-hartweizen-linguine: 28 biomarkers
+hähnchenbrustfilet: 27 biomarkers
+haselnusskerne gehackt: 28 biomarkers
+leicht und cross goldweizen: 28 biomarkers
+palatum grüne oliven mit frischkäse creme: 13 biomarkers
+spinat dinkel pfannkuchen: 27 biomarkers
+börek mit käse: 13 biomarkers
+linsensuppe: 28 biomarkers
+rinderrouladen mit soße: 27 biomarkers
+grüne bohnen mit speck: 27 biomarkers
+
+Unmatched foods (807):
+  - Vollkornbrot
+  - Quark mager
+  - Quark 20
+  - Gouda
+  - Edamer
+  - Camembert
+  - Schweinefleisch roh
+  - Wiener Würstchen
+  - Bratwurst
+  - Schinken gekocht
+  - Möhre roh
+  - Walnüsse
+  - Olivenöl
+  - Rapsöl
+  - Sonnenblumenöl
+  - Schokolade zartbitter
+  - Honig
+  - Zucker weiss
+  - Marmelade
+  - Salz

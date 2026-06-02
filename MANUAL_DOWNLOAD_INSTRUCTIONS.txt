@@ -1,0 +1,94 @@
+======================================================================
+MANUAL DOWNLOAD REQUIRED - FooDB
+======================================================================
+
+The automatic download script cannot access the FooDB download URLs.
+Please follow these manual steps:
+
+STEP 1: Visit the Downloads Page
+-------------------------------
+Open in your browser:
+https://foodb.ca/downloads
+
+STEP 2: Download the JSON File
+-------------------------------
+Look for this entry on the page:
+
+  FooDB JSON file | April 7 2020 | Download (zip file) | 86.66 MB
+
+Click on: "Download (zip file)"
+
+Save the file as: foodb_2020_4_7_json.zip
+
+STEP 3: Move to Project Directory
+----------------------------------
+Move the downloaded file to:
+
+  D:\Personal Data\Kai Uwe\Documents\Kai\projects\Blutwerte\data\foodb\foodb_2020_4_7_json.zip
+
+(Create the data\foodb\ directory if it doesn't exist)
+
+STEP 4: Extract the Archive
+----------------------------
+Extract foodb_2020_4_7_json.zip to:
+
+  D:\Personal Data\Kai Uwe\Documents\Kai\projects\Blutwerte\data\foodb\
+
+You should now have:
+
+  D:\Personal Data\Kai Uwe\Documents\Kai\projects\Blutwerte\data\foodb\FooDB.json
+
+(Note: It should be about 300-400 MB when extracted)
+
+STEP 5: Verify the Setup
+-------------------------
+Run:
+
+  python quickstart_foodb.py
+
+This will:
+- Verify the file is in the right place
+- Test loading the data
+- Show a demo search
+
+STEP 6: Enrich Your Foods
+--------------------------
+Once verified, run:
+
+  python enrich_foods_with_foodb.py --limit 10
+
+This will test on 10 foods first.
+
+Then run:
+
+  python enrich_foods_with_foodb.py
+
+To process all 8,419 foods!
+
+======================================================================
+Alternative: Use CSV Format
+======================================================================
+
+If you prefer, you can download the CSV version instead:
+
+1. Download: "FooDB CSV file" (952.52 MB tar.gz)
+2. Extract to: data\foodb\
+3. You'll get multiple CSV files (Food.csv, Compound.csv, Content.csv, etc.)
+4. The importer will load from CSV instead of JSON
+
+======================================================================
+Troubleshooting
+======================================================================
+
+Q: The download is very slow
+A: This is normal for large files. The JSON is 87 MB compressed.
+
+Q: I get "File not found" errors
+A: Make sure the FooDB.json file is in:
+   D:\Personal Data\Kai Uwe\Documents\Kai\projects\Blutwerte\data\foodb\
+
+Q: Can I use a different location?
+A: Yes, just pass the path to the scripts:
+   python quickstart_foodb.py --food-db C:\path\to\foodb
+
+======================================================================

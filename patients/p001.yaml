@@ -1,0 +1,400 @@
+# Patient Profile: Max Mustermann (p001)
+# Created: 2024-01-15
+# Last Updated: 2024-01-15
+
+patient_id: "p001"
+name: "Max Mustermann"
+
+# Static demographics
+gender: "male"
+birth_date: "1968-05-15"
+
+# Optional personal information (can be omitted for privacy)
+# address:
+#   street: "Musterstraße 123"
+#   city: "Berlin"
+#   postal_code: "10115"
+#   country: "Germany"
+# phone: "+49 30 12345678"
+# email: "max.mustermann@email.de"
+
+# Current medications with temporal tracking
+# All medications currently active (no end_date = still taking)
+medications:
+  # PRESCRIPTION MEDICATIONS
+  
+  - value:
+      medication_name: "Bendroflumethiazide"
+      brand_name: "Xipamid"
+      dosage: 2.5
+      dosage_unit: "mg"
+      frequency: "once_daily"
+      administration_time: "morning"
+      prescribed_for: "hypertension"
+    start_date: "2023-03-01"
+    notes: "Started for blood pressure control. Good response. Mild hypokalemia noted on last labs."
+    
+  - value:
+      medication_name: "Telmisartan"
+      brand_name: "Micardis"
+      dosage: 40
+      dosage_unit: "mg"
+      frequency: "once_daily"
+      administration_time: "morning"
+      prescribed_for: "hypertension"
+    start_date: "2023-03-01"
+    notes: "Added as combination therapy. BP well controlled."
+    
+  - value:
+      medication_name: "Rosuvastatin"
+      brand_name: "Crestor"
+      dosage: 10
+      dosage_unit: "mg"
+      frequency: "once_daily"
+      administration_time: "evening"
+      prescribed_for: "hyperlipidemia"
+    start_date: "2022-01-15"
+    notes: "Started for high LDL. Good tolerance. Liver enzymes normal."
+    
+  - value:
+      medication_name: "Escitalopram"
+      brand_name: "Cipralex"
+      dosage: 10
+      dosage_unit: "mg"
+      frequency: "once_daily"
+      administration_time: "morning"
+      prescribed_for: "depression"
+    start_date: "2024-01-10"
+    notes: "Started for recurrent depressive episode. Patient reports improved mood. Monitoring for side effects."
+
+  # SUPPLEMENTS
+  
+  - value:
+      medication_name: "L-Arginine"
+      dosage: 3000
+      dosage_unit: "mg"
+      frequency: "twice_daily"
+      administration_time: "morning"
+      composition:
+        l_arginine: 3000
+    start_date: "2024-01-01"
+    notes: "Started for cardiovascular support and blood pressure. Self-prescribed."
+    
+  - value:
+      medication_name: "Omega-3 Fatty Acids"
+      dosage: 1000
+      dosage_unit: "mg"
+      frequency: "once_daily"
+      administration_time: "with_meals"
+      composition:
+        epa: 300
+        dha: 200
+    start_date: "2023-01-01"
+    notes: "Fish oil supplement. Taking with breakfast."
+    
+  - value:
+      medication_name: "Vitamin D3"
+      dosage: 2000
+      dosage_unit: "IU"
+      frequency: "once_daily"
+      administration_time: "with_meals"
+      composition:
+        vitamin_d3: 2000
+    start_date: "2022-06-01"
+    notes: "Started after low level found (18 ng/mL). Retest planned."
+    
+  - value:
+      medication_name: "Vitamin K2"
+      dosage: 100
+      dosage_unit: "mcg"
+      frequency: "once_daily"
+      administration_time: "with_meals"
+      composition:
+        vitamin_k2_mk7: 100
+    start_date: "2022-06-01"
+    notes: "Combined with D3 for bone and cardiovascular health. MK-7 form."
+    
+  - value:
+      medication_name: "Vitamin B3"
+      dosage: 16
+      dosage_unit: "mg"
+      frequency: "once_daily"
+      administration_time: "with_meals"
+      composition:
+        niacin: 16
+    start_date: "2023-01-01"
+    notes: "Part of B-complex. RDA dose, not therapeutic."
+    
+  - value:
+      medication_name: "Vitamin B6"
+      dosage: 2
+      dosage_unit: "mg"
+      frequency: "once_daily"
+      administration_time: "with_meals"
+      composition:
+        pyridoxine: 2
+    start_date: "2023-01-01"
+    notes: "Part of B-complex. Low dose, well below toxicity threshold."
+    
+  - value:
+      medication_name: "Vitamin B12"
+      dosage: 10
+      dosage_unit: "mcg"
+      frequency: "once_daily"
+      administration_time: "with_meals"
+      composition:
+        cobalamin: 10
+    start_date: "2023-01-01"
+    notes: "Part of B-complex. Preventive dose."
+    
+  - value:
+      medication_name: "Zinc"
+      dosage: 15
+      dosage_unit: "mg"
+      frequency: "once_daily"
+      administration_time: "with_meals"
+      composition:
+        zinc: 15
+    start_date: "2023-01-01"
+    notes: "Immune support. Moderate dose. Should not cause copper deficiency at this level."
+    
+  - value:
+      medication_name: "Nattokinase"
+      dosage: 2000
+      dosage_unit: "FU"
+      frequency: "once_daily"
+      administration_time: "evening"
+      composition:
+        nattokinase: 2000
+    start_date: "2024-01-01"
+    notes: "Started for cardiovascular support. Monitor for any bleeding/bruising." 
+
+# Discontinued medications (with end_date)
+discontinued_medications:
+  - value:
+      medication_name: "Amlodipine"
+      dosage: 5
+      dosage_unit: "mg"
+      frequency: "once_daily"
+      prescribed_for: "hypertension"
+    start_date: "2020-01-01"
+    end_date: "2023-03-01"
+    end_reason: "Peripheral edema side effect. Switched to combination therapy."
+    notes: "Developed ankle swelling. Discontinued successfully."
+
+# Medical conditions history
+conditions:
+  - value: "hypertension"
+    start_date: "2015-01-01"
+    status: "active"
+    icd10: "I10"
+    notes: "Essential hypertension. Well controlled on current regimen. BP target <130/80."
+    
+  - value: "dyslipidemia"
+    start_date: "2018-06-01"
+    status: "active"
+    icd10: "E78.5"
+    notes: "Elevated LDL. On statin therapy. Last LDL 99 mg/dL."
+    
+  - value: "major_depressive_disorder"
+    start_date: "2023-12-01"
+    status: "active"
+    icd10: "F33.1"
+    notes: "Recurrent episode. Previous episode 2015-2016. Responds well to SSRIs."
+    
+  - value: "vitamin_d_deficiency"
+    start_date: "2022-05-01"
+    status: "resolved"
+    icd10: "E55.9"
+    end_date: "2022-12-01"
+    notes: "Level was 18 ng/mL in May 2022. Retested November 2022 at 42 ng/mL. Continue supplementation."
+
+# Vital signs history (blood pressure, heart rate, weight)
+vitals:
+  - timestamp: "2025-10-28T08:00:00"
+    date: "2025-10-28"
+    blood_pressure_systolic: 128
+    blood_pressure_diastolic: 82
+    heart_rate: 68
+    weight: 88.0
+    height: 180
+    bmi: 27.2
+    notes: "Morning measurement, seated, automated cuff. Well controlled."
+    
+  - timestamp: "2025-04-15T10:30:00"
+    date: "2025-04-15"
+    blood_pressure_systolic: 135
+    blood_pressure_diastolic: 88
+    heart_rate: 72
+    weight: 89.5
+    bmi: 27.6
+    notes: "Slightly elevated BP, stress at work."
+    
+  - timestamp: "2024-10-20T09:00:00"
+    date: "2024-10-20"
+    blood_pressure_systolic: 142
+    blood_pressure_diastolic: 92
+    heart_rate: 75
+    weight: 91.0
+    bmi: 28.1
+    notes: "Higher readings, lifestyle modification discussed. Weight down 2kg since."
+    
+  - timestamp: "2024-04-10T08:30:00"
+    date: "2024-04-10"
+    blood_pressure_systolic: 138
+    blood_pressure_diastolic: 86
+    heart_rate: 70
+    weight: 92.5
+    bmi: 28.5
+    notes: "Stable. Discussed weight management."
+
+# Weight history (separate tracking)
+weight_history:
+  - value: 88.0
+    start_date: "2025-10-28"
+    unit: "kg"
+    notes: "Current weight, gradual loss over past year."
+    
+  - value: 89.5
+    start_date: "2025-04-15"
+    unit: "kg"
+    
+  - value: 91.0
+    start_date: "2024-10-20"
+    unit: "kg"
+    
+  - value: 92.5
+    start_date: "2024-04-10"
+    unit: "kg"
+    notes: "Peak weight. Started lifestyle modifications."
+
+# Lifestyle factors
+lifestyle:
+  - value:
+      smoking: "former"
+      smoking_quit_date: "2000-01-01"
+      smoking_pack_years: 5
+      smoking_duration_years: 10  # 1990-2000
+      alcohol: "occasional"
+      alcohol_frequency: "1-2 drinks per week"
+      exercise: "moderate"
+      exercise_frequency: "2-3 times per week"
+      exercise_type: "walking, cycling"
+      diet: "mediterranean"
+      stress_level: "moderate"
+    start_date: "2000-01-01"
+    notes: "Quit smoking 26 years ago. Occasional alcohol. Moderate exercise. Working on weight."
+
+# Family history
+family_history:
+  - condition: "coronary_artery_disease"
+    relative: "father"
+    age_at_onset: 62
+    status: "deceased"
+    notes: "MI at 62, died at 71"
+    
+  - condition: "hypertension"
+    relative: "mother"
+    age_at_onset: 55
+    status: "alive"
+    notes: "Well controlled on medication"
+    
+  - condition: "type_2_diabetes"
+    relative: "maternal_grandmother"
+    age_at_onset: 68
+    status: "deceased"
+    notes: "Diabetes complications"
+
+# Laboratory file references
+lab_files:
+  - date: "2025-10-28"
+    file: "lab_files/p001_2025-10-28.csv"
+    type: "blood_test"
+    notes: "Routine check-up. Mild hypokalemia noted (K+ 3.31). Otherwise unremarkable. CRP slightly elevated at 2.3."
+    
+  - date: "2025-04-15"
+    file: "lab_files/p001_2025-04-15.csv"
+    type: "blood_test"
+    notes: "Potassium 3.8 mmol/L (low-normal). Other values normal."
+    
+  - date: "2024-10-20"
+    file: "lab_files/p001_2024-10-20.csv"
+    type: "blood_test"
+    notes: "Routine check-up. Lipids improved on statin."
+
+# Medication adherence notes
+adherence_notes:
+  - date: "2025-10-28"
+    note: "Patient reports good adherence to all medications. Takes morning medications with breakfast, evening medications with dinner. No missed doses in past month."
+    
+  - date: "2024-12-15"
+    note: "Patient started escitalopram. Counseled on side effects. Will follow up in 4 weeks."
+
+# Monitoring schedule
+monitoring_schedule:
+  - biomarker: "Potassium"
+    frequency: "3-6 months"
+    next_due: "2026-01-28"
+    reason: "On thiazide diuretic (Xipamid)"
+    
+  - biomarker: "Lipid Panel"
+    frequency: "6-12 months"
+    next_due: "2026-04-28"
+    reason: "On statin therapy"
+    
+  - biomarker: "Liver Enzymes"
+    frequency: "Annually"
+    next_due: "2026-01-15"
+    reason: "On statin"
+    
+  - biomarker: "Sodium"
+    frequency: "4 weeks after initiation"
+    next_due: "2024-02-07"
+    reason: "On escitalopram - check for SIADH"
+    status: "overdue"
+    notes: "Should have been checked in February 2024. Order at next visit."
+    
+  - biomarker: "25-OH Vitamin D"
+    frequency: "Annually"
+    next_due: "2025-06-01"
+    reason: "On supplementation for prior deficiency"
+    status: "overdue"
+    notes: "Should check level to confirm adequacy."
+
+# Allergies and intolerances
+allergies:
+  - allergen: "Penicillin"
+    reaction: "Rash"
+    severity: "mild"
+    date_discovered: "1990-01-01"
+    notes: "Childhood reaction. Avoid penicillins."
+
+# Emergency contact
+emergency_contact:
+  name: "Maria Mustermann"
+  relationship: "spouse"
+  phone: "+49 30 87654321"
+  
+# Physician information
+primary_physician:
+  name: "Dr. Klaus Schmidt"
+  practice: "Hausarztpraxis Berlin-Mitte"
+  phone: "+49 30 11111111"
+  email: "praxis@schmidt-berlin.de"
+
+# Notes and reminders
+notes:
+  - date: "2025-10-28"
+    note: "Patient doing well overall. BP well controlled. Weight gradually decreasing. Mood stable on escitalopram. Discussed potassium-rich diet options given low-normal K+."
+    author: "Dr. Schmidt"
+    
+  - date: "2025-10-28"
+    note: "Patient interested in supplement regimen review. All current supplements appear safe with medications. No major interactions noted. Patient should continue K2 with D3 for bone health."
+    author: "Dr. Schmidt"
+
+# Future appointments
+appointments:
+  - date: "2026-01-28"
+    type: "follow_up"
+    purpose: "Routine blood work and medication review"
+    notes: "Check potassium, lipid panel, liver enzymes. Review vitamin D level."

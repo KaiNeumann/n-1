@@ -1,0 +1,46 @@
+"""
+Activities system for tracking exercise and physical activity effects on biomarkers.
+
+This module provides models and analysis for understanding how physical activities
+affect blood test values, similar to how foods affect biomarkers through nutrition.
+
+Example:
+    >>> from blutwerte.activities import Activity, ActivitySession
+    >>> from blutwerte.activities.data import create_running
+    >>> 
+    >>> # Create activity
+    >>> running = create_running()
+    >>> 
+    >>> # Log a session
+    >>> session = ActivitySession(
+    ...     activity=running,
+    ...     duration_minutes=30,
+    ...     intensity=IntensityLevel.MODERATE,
+    ...     timestamp=datetime.now()
+    ... )
+    >>> 
+    >>> # Check effects
+    >>> effects = session.get_effects()
+    >>> for effect in effects:
+    ...     print(f"{effect.target_name}: {effect.direction.value}")
+"""
+
+from .models import (
+    Activity,
+    ActivityEffect,
+    ActivitySession,
+    WeeklyActivitySummary,
+    ActivityCategory,
+    IntensityLevel,
+)
+
+__all__ = [
+    # Models
+    "Activity",
+    "ActivityEffect",
+    "ActivitySession",
+    "WeeklyActivitySummary",
+    # Enums
+    "ActivityCategory",
+    "IntensityLevel",
+]
