@@ -1,5 +1,5 @@
 {
-  "file_count": 19,
+  "file_count": 20,
   "files": {
     "knowledge/activities/activities.jsonl": {
       "sha256": "c2fea32b5504ec1679bc7c962ef908f3a19e3a9cd695c8a2bffa1ac02dd33efe",
@@ -76,9 +76,13 @@
     "knowledge/nutrients/nutrients.jsonl": {
       "sha256": "f3069b7ad3d7970d7c9f1ffea44ef0cdcaba6f83de158527b8e25b02ff7c9f0c",
       "size": 5822
+    },
+    "knowledge/units/portions.jsonl": {
+      "sha256": "d36a7b8552698108422a2405e4b10185cf8bd866da320545d95949fe9be8bd46",
+      "size": 2603
     }
   },
-  "generated_at": "2026-06-02T14:45:51.010462+00:00",
+  "generated_at": "2026-06-02T14:50:00.423730+00:00",
   "knowledge_root": "knowledge/",
   "schema_version": 1
 }

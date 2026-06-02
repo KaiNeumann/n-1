@@ -188,6 +188,24 @@ def main() -> int:
     orig_acts = _gather_original_activities()
     errs.extend(_check_activities(acts, orig_acts))
 
+    # Units (portions)
+    print("--- units (portions) ---")
+    unit_path = REPO_ROOT / "knowledge" / "units" / "portions.jsonl"
+    units = [json.loads(l) for l in unit_path.read_text(encoding="utf-8").splitlines() if l.strip()]
+    print(f"  loaded {len(units)} rows")
+    for i, u in enumerate(units, 1):
+        errs.extend(_check_required_fields("unit", u, i, unit_path))
+    errs.extend(_check_unique_ids("unit", units, unit_path))
+    # Cross-check: every portion in JSONL must exist in the live Python registry
+    from blutwerte.foods.portions_jsonl_loader import load_portions_from_python
+    live = load_portions_from_python()
+    for u in units:
+        n = (u.get("name") or "").lower()
+        if n not in live:
+            errs.append(f"unit {u.get('id')!r} name={n!r} not in live Python registry")
+        elif live[n]["weight_grams"] != u.get("weight_grams"):
+            errs.append(f"unit {u.get('id')!r} weight mismatch jsonl={u.get('weight_grams')} python={live[n]['weight_grams']}")
+
     # Summary
     print("=== summary ===")
     print(f"  medications: {len(meds)}")
@@ -195,6 +213,7 @@ def main() -> int:
     print(f"  foods:       {total_foods}")
     print(f"  nutrients:   {len(nuts)}")
     print(f"  activities:  {len(acts)}")
+    print(f"  units:       {len(units)}")
     print(f"  errors:      {len(errs)}")
     if errs:
         print()

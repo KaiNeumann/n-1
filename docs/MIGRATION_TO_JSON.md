@@ -17,16 +17,28 @@ executed by `tools/migrate_to_json.py`.
 | Foods (Yazio)       | `blutwerte/foods/data/legacy/food_yazio_migrated.py` | 8 | `knowledge/foods/yazio.jsonl`         | ✓    |
 | Foods (manual)      | `blutwerte/foods/data/legacy/food_other_manual_migrated.py` | 31 | `knowledge/foods/manual.jsonl`     | ✓    |
 | Foods (priority)    | `blutwerte/foods/data/{vegetables,fruits,dairy,grains,proteins/*}.py` | 22 | `knowledge/foods/priority_*.jsonl` | ✓    |
-| Nutrients   | `blutwerte/foods/rdi.py`                |   80+ | `knowledge/nutrients.jsonl`                    | ☐    |
-| Activities  | `blutwerte/activities/data/common_activities.py` |   6 | `knowledge/activities.jsonl`                 | ☐    |
-| Units       | `blutwerte/foods/portions.py`           |    28 | `knowledge/units.jsonl`                       | ☐    |
+| Nutrients   | `blutwerte/foods/rdi.py`                |    10 | `knowledge/nutrients/nutrients.jsonl`         | ✓    |
+| Activities  | `blutwerte/activities/data/common_activities.py` |    58 | `knowledge/activities/activities.jsonl` | ✓    |
+| Units       | `blutwerte/foods/portions.py`           |    27 | `knowledge/units/portions.jsonl`              | ✓    |
 
 ### Wired up (JSONL preferred, Python fallback)
 
 - `blutwerte/medications/jsonl_loader.py` + `_load_all_medications` prefers JSONL.
 - `blutwerte/bloodtests/jsonl_loader.py` + `_initialize_biomarkers` prefers JSONL.
 - `blutwerte/foods/jsonl_loader.py` + `FoodDatabase.load_all` prefers JSONL.
-- Python sources remain as `_python` fallbacks for at least one release.
+- `blutwerte/foods/jsonl_rdi_loader.py` + `_load_rdi_registry` prefers JSONL.
+- `blutwerte/activities/jsonl_loader.py` + `load_activities(source='auto')` prefers JSONL.
+- `blutwerte/foods/portions_jsonl_loader.py` audits the live PortionRegistry; the
+  JSONL is the formal data representation. The Python registry remains the
+  live consumer at import time (it constructs the 27 Portion objects from the
+  same name/weight tuples). Future refactor: make `portions.py` initialize
+  from JSONL.
+
+### Open follow-ups
+
+- **Portion category defaults** (the 26 `CategoryPortionDefaults.set(...)`
+  calls in portions.py) are mutable runtime state, not static knowledge.
+  They were deliberately left in Python and not migrated.
 
 JSONL everywhere (one object per line), for uniform tooling and
 append-friendly edits. The principles doc is the source of truth on

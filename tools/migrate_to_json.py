@@ -382,6 +382,42 @@ def migrate_activities(out_dir: Path, dry_run: bool = False) -> int:
 
 
 # ---------------------------------------------------------------------------
+# Units (portions)
+# ---------------------------------------------------------------------------
+
+def migrate_units(out_dir: Path, dry_run: bool = False) -> int:
+    """Audit the predefined Portion objects in blutwerte.foods.portions and
+    write them to JSONL. This is a data audit, not a code rewire: portions.py
+    remains the live registry; the JSONL is the formal data so the
+    round-trip test can verify the names/weights.
+    """
+    print("=== units (portions) ===")
+    from blutwerte.foods.portions import Registry as PortionsRegistry
+
+    portions = list(PortionsRegistry.portions.values())
+    print(f"  collected {len(portions)} Portion objects")
+
+    target = out_dir / "knowledge" / "units" / "portions.jsonl"
+    if dry_run:
+        print(f"  DRY  would write {target} ({len(portions)} rows)")
+        return len(portions)
+
+    def _portion_to_row(p) -> Dict[str, Any]:
+        return {
+            "id": n1_id(p.name),
+            "name": p.name,
+            "weight_grams": p.weight,
+            "schema_version": SCHEMA_VERSION,
+            "source": "n1",
+        }
+
+    rows = [_portion_to_row(p) for p in sorted(portions, key=lambda p: p.name)]
+    n = write_jsonl(target, rows)
+    print(f"  wrote {n} rows to {target}")
+    return n
+
+
+# ---------------------------------------------------------------------------
 # Driver
 # ---------------------------------------------------------------------------
 
@@ -389,7 +425,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.strip().splitlines()[0])
     parser.add_argument(
         "what",
-        choices=["medications", "biomarkers", "foods", "nutrients", "activities", "all"],
+        choices=["medications", "biomarkers", "foods", "nutrients", "activities", "units", "all"],
     )
     parser.add_argument("--out", type=Path, default=REPO_ROOT,
                         help="Output directory (default: repo root)")
@@ -410,6 +446,8 @@ def main() -> int:
         counts["nutrients"] = migrate_nutrients(args.out, args.dry_run)
     if args.what in ("activities", "all"):
         counts["activities"] = migrate_activities(args.out, args.dry_run)
+    if args.what in ("units", "all"):
+        counts["units"] = migrate_units(args.out, args.dry_run)
 
     print("=== summary ===")
     for k, v in counts.items():
