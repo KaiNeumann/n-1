@@ -1,10 +1,10 @@
 """
-Example usage of the Blutwerte library
+Example usage of the core library
 
 This file demonstrates how to use the blood test biomarker library.
 """
 
-from blutwerte import (
+from core import (
     get_biomarker, 
     search_biomarkers, 
     list_biomarkers,
@@ -115,7 +115,7 @@ def example_categories():
     print("=" * 60)
     
     # Get all enzymes
-    from blutwerte.biomarkers_db import _db
+    from core.biomarkers_db import _db
     enzymes = _db.by_category(Category.ENZYMES)
     print(f"\nEnzymes ({len(enzymes)} total):")
     for e in enzymes[:5]:  # Show first 5
@@ -190,7 +190,7 @@ def example_list_all():
 
 if __name__ == "__main__":
     print("\n" + "=" * 60)
-    print("Blutwerte Library - Usage Examples")
+    print("core Library - Usage Examples")
     print("=" * 60)
     
     # Run all examples

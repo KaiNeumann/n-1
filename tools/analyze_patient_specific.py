@@ -8,11 +8,11 @@ import sys
 from datetime import datetime
 from collections import defaultdict
 
-# Add blutwerte to path
-sys.path.insert(0, 'D:\\Personal Data\\Kai Uwe\\Documents\\Kai\\projects\\Blutwerte')
+# Add core to path
+sys.path.insert(0, 'D:\\Personal Data\\Kai Uwe\\Documents\\Kai\\projects\\core')
 
-from blutwerte.bloodtests import BiomarkerDatabase
-from blutwerte.bloodtests import Category
+from core.bloodtests import BiomarkerDatabase
+from core.bloodtests import Category
 
 def parse_value(val):
     """Parse a numeric value from CSV"""

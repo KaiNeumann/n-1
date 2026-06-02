@@ -7,10 +7,10 @@ of the patient's Xipamid medication.
 """
 
 import sys
-sys.path.insert(0, 'D:\\Personal Data\\Kai Uwe\\Documents\\Kai\\projects\\Blutwerte')
+sys.path.insert(0, 'D:\\Personal Data\\Kai Uwe\\Documents\\Kai\\projects\\core')
 
 from datetime import date
-from blutwerte.medications import (
+from core.medications import (
     get_database, 
     MedicationAnalyzer,
     PatientMedication,
@@ -161,7 +161,7 @@ def test_patient_profile():
     print(f"Current Age: {patient.get_current_age()}")
     
     # Add medication
-    from blutwerte.medications.models import TemporalValue
+    from core.medications.models import TemporalValue
     
     xipamid = PatientMedication(
         medication_name="Bendroflumethiazide",

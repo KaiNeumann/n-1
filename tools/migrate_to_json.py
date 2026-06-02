@@ -35,12 +35,12 @@ from uuid import UUID
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from blutwerte.medications.models import Medication            # noqa: E402
-from blutwerte.medications.effects.dose_models import DoseEffectModel  # noqa: E402
-from blutwerte.bloodtests.models import Biomarker              # noqa: E402
-from blutwerte.foods.models import Food                         # noqa: E402
-from blutwerte.foods.rdi import RDI                            # noqa: E402
-from blutwerte.activities.models import Activity               # noqa: E402
+from core.medications.models import Medication            # noqa: E402
+from core.medications.effects.dose_models import DoseEffectModel  # noqa: E402
+from core.bloodtests.models import Biomarker              # noqa: E402
+from core.foods.models import Food                         # noqa: E402
+from core.foods.rdi import RDI                            # noqa: E402
+from core.activities.models import Activity               # noqa: E402
 
 SCHEMA_VERSION = 1
 
@@ -113,12 +113,12 @@ def write_jsonl(path: Path, rows: Iterable[Dict[str, Any]]) -> int:
 # ---------------------------------------------------------------------------
 
 def _collect_medication_modules() -> List[Tuple[str, Any]]:
-    """Find every module in blutwerte.medications.data that creates medications."""
+    """Find every module in core.medications.data that creates medications."""
     modules: List[Tuple[str, Any]] = []
     try:
-        from blutwerte.medications import data as meds_data
+        from core.medications import data as meds_data
     except ImportError:
-        print("  WARN  blutwerte.medications.data not present (already deleted)")
+        print("  WARN  core.medications.data not present (already deleted)")
         return modules
 
     for _, modname, _ in pkgutil.iter_modules(meds_data.__path__, meds_data.__name__ + "."):
@@ -128,7 +128,7 @@ def _collect_medication_modules() -> List[Tuple[str, Any]]:
             print(f"  WARN  could not import {modname}: {exc}")
 
     try:
-        from blutwerte.medications.data import vitamins
+        from core.medications.data import vitamins
         for _, modname, _ in pkgutil.iter_modules(vitamins.__path__, vitamins.__name__ + "."):
             try:
                 modules.append((modname, importlib.import_module(modname)))
@@ -193,7 +193,7 @@ def migrate_medications(out_dir: Path, dry_run: bool = False) -> int:
 
 def migrate_biomarkers(out_dir: Path, dry_run: bool = False) -> int:
     print("=== biomarkers ===")
-    from blutwerte.bloodtests.biomarkers_db import BiomarkerDatabase
+    from core.bloodtests.biomarkers_db import BiomarkerDatabase
 
     db = BiomarkerDatabase()
     biomarkers: List[Biomarker] = list(db._biomarkers.values())
@@ -222,21 +222,21 @@ def migrate_biomarkers(out_dir: Path, dry_run: bool = False) -> int:
 # ---------------------------------------------------------------------------
 
 FOOD_SOURCES = [
-    ("bls_curated", "blutwerte.foods.data.legacy.food_bls_migrated"),
-    ("bls",         "blutwerte.foods.data.legacy.food_bls_german_migrated"),
-    ("swiss",       "blutwerte.foods.data.legacy.food_naehrwertdaten_ch_migrated"),
-    ("openfoodfacts", "blutwerte.foods.data.legacy.food_openfoodfacts_manual_migrated"),
-    ("yazio",       "blutwerte.foods.data.legacy.food_yazio_manual_migrated"),
-    ("manual",      "blutwerte.foods.data.legacy.food_other_manual_migrated"),
-    ("priority_vegetables", "blutwerte.foods.data.vegetables"),
-    ("priority_fruits",     "blutwerte.foods.data.fruits"),
-    ("priority_dairy",      "blutwerte.foods.data.dairy"),
-    ("priority_grains",     "blutwerte.foods.data.grains"),
-    ("priority_proteins_meat",    "blutwerte.foods.data.proteins.meat"),
-    ("priority_proteins_fish",    "blutwerte.foods.data.proteins.fish"),
-    ("priority_proteins_eggs",    "blutwerte.foods.data.proteins.eggs"),
-    ("priority_proteins_legumes", "blutwerte.foods.data.proteins.legumes"),
-    ("priority_proteins_plant",   "blutwerte.foods.data.proteins.plant"),
+    ("bls_curated", "core.foods.data.legacy.food_bls_migrated"),
+    ("bls",         "core.foods.data.legacy.food_bls_german_migrated"),
+    ("swiss",       "core.foods.data.legacy.food_naehrwertdaten_ch_migrated"),
+    ("openfoodfacts", "core.foods.data.legacy.food_openfoodfacts_manual_migrated"),
+    ("yazio",       "core.foods.data.legacy.food_yazio_manual_migrated"),
+    ("manual",      "core.foods.data.legacy.food_other_manual_migrated"),
+    ("priority_vegetables", "core.foods.data.vegetables"),
+    ("priority_fruits",     "core.foods.data.fruits"),
+    ("priority_dairy",      "core.foods.data.dairy"),
+    ("priority_grains",     "core.foods.data.grains"),
+    ("priority_proteins_meat",    "core.foods.data.proteins.meat"),
+    ("priority_proteins_fish",    "core.foods.data.proteins.fish"),
+    ("priority_proteins_eggs",    "core.foods.data.proteins.eggs"),
+    ("priority_proteins_legumes", "core.foods.data.proteins.legumes"),
+    ("priority_proteins_plant",   "core.foods.data.proteins.plant"),
 ]
 
 
@@ -316,7 +316,7 @@ def migrate_foods(out_dir: Path, dry_run: bool = False) -> int:
 
 def migrate_nutrients(out_dir: Path, dry_run: bool = False) -> int:
     print("=== nutrients ===")
-    from blutwerte.foods.rdi import get_all_rdis
+    from core.foods.rdi import get_all_rdis
 
     registry = get_all_rdis()
     print(f"  collected {len(registry)} RDI entries")
@@ -355,7 +355,7 @@ def _activity_to_row(act: Activity) -> Dict[str, Any]:
 def migrate_activities(out_dir: Path, dry_run: bool = False) -> int:
     print("=== activities ===")
     try:
-        module = importlib.import_module("blutwerte.activities.data.common_activities")
+        module = importlib.import_module("core.activities.data.common_activities")
     except Exception as exc:
         print(f"  WARN  could not import activities module: {exc}")
         return 0
@@ -393,13 +393,13 @@ def migrate_activities(out_dir: Path, dry_run: bool = False) -> int:
 # ---------------------------------------------------------------------------
 
 def migrate_units(out_dir: Path, dry_run: bool = False) -> int:
-    """Audit the predefined Portion objects in blutwerte.foods.portions and
+    """Audit the predefined Portion objects in core.foods.portions and
     write them to JSONL. This is a data audit, not a code rewire: portions.py
     remains the live registry; the JSONL is the formal data so the
     round-trip test can verify the names/weights.
     """
     print("=== units (portions) ===")
-    from blutwerte.foods.portions import Registry as PortionsRegistry
+    from core.foods.portions import Registry as PortionsRegistry
 
     portions = list(PortionsRegistry.portions.values())
     print(f"  collected {len(portions)} Portion objects")

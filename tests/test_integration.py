@@ -11,11 +11,11 @@ Demonstrates:
 """
 
 import sys
-sys.path.insert(0, 'D:\\Personal Data\\Kai Uwe\\Documents\\Kai\\projects\\Blutwerte')
+sys.path.insert(0, 'D:\\Personal Data\\Kai Uwe\\Documents\\Kai\\projects\\core')
 
 from datetime import date
-from blutwerte.patients.loader import load_patient
-from blutwerte.medications import MedicationAnalyzer, get_database
+from core.patients.loader import load_patient
+from core.medications import MedicationAnalyzer, get_database
 
 
 def test_integration():

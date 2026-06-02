@@ -255,7 +255,7 @@ Added based on clinical importance
 
 ### Basic Usage
 ```python
-from blutwerte import get_biomarker
+from core import get_biomarker
 
 # Get biomarker
 crp = get_biomarker("CRP")
@@ -269,7 +269,7 @@ print(crp.interpretation.high)
 
 ### Search Functionality
 ```python
-from blutwerte import search_biomarkers
+from core import search_biomarkers
 
 # Search partial name
 results = search_biomarkers("troponin")

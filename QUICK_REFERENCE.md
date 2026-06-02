@@ -3,7 +3,7 @@
 ## 🚀 Quick Start
 
 ```python
-from blutwerte import get_biomarker, search_biomarkers, list_biomarkers
+from core import get_biomarker, search_biomarkers, list_biomarkers
 
 # Get biomarker information
 crp = get_biomarker("CRP")
@@ -193,7 +193,7 @@ all_names = list_biomarkers()
 - Full Documentation: [README.md](README.md)
 - Verification Report: [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md)
 - Medical Sources: [MEDICAL_SOURCES.md](MEDICAL_SOURCES.md)
-- API Reference: Python docstrings in `blutwerte/` directory
+- API Reference: Python docstrings in `core/` directory
 
 ---
 

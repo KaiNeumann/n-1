@@ -20,11 +20,11 @@ from typing import Dict, List, Tuple
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from blutwerte.medications.models import Medication            # noqa: E402
-from blutwerte.bloodtests.models import Biomarker              # noqa: E402
-from blutwerte.foods.models import Food                         # noqa: E402
-from blutwerte.foods.rdi import RDI                            # noqa: E402
-from blutwerte.activities.models import Activity               # noqa: E402
+from core.medications.models import Medication            # noqa: E402
+from core.bloodtests.models import Biomarker              # noqa: E402
+from core.foods.models import Food                         # noqa: E402
+from core.foods.rdi import RDI                            # noqa: E402
+from core.activities.models import Activity               # noqa: E402
 
 
 REQUIRED_FIELDS = {"id", "schema_version", "source", "name"}
@@ -91,18 +91,18 @@ def _check_food_nutrition(rows: List[dict], path: Path) -> List[str]:
 
 
 def _gather_original_medications() -> Dict[str, Medication]:
-    from blutwerte.medications.database import MedicationDatabase
+    from core.medications.database import MedicationDatabase
     db = MedicationDatabase()
     return {m.name.lower(): m for m in db._medications.values()}
 
 
 def _gather_original_rdis() -> Dict[str, RDI]:
-    from blutwerte.foods.rdi import get_all_rdis
+    from core.foods.rdi import get_all_rdis
     return get_all_rdis()
 
 
 def _gather_original_activities() -> Dict[str, Activity]:
-    from blutwerte.activities import load_activities
+    from core.activities import load_activities
     return load_activities()
 
 
@@ -197,7 +197,7 @@ def main() -> int:
         errs.extend(_check_required_fields("unit", u, i, unit_path))
     errs.extend(_check_unique_ids("unit", units, unit_path))
     # Cross-check: every portion in JSONL must exist in the live Python registry
-    from blutwerte.foods.portions_jsonl_loader import load_portions_from_python
+    from core.foods.portions_jsonl_loader import load_portions_from_python
     live = load_portions_from_python()
     for u in units:
         n = (u.get("name") or "").lower()

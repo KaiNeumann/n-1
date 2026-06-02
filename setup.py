@@ -1,8 +1,8 @@
 """
 Setup script for the n-1 package.
 
-The importable Python package is still called `blutwerte` for backward
-compatibility, but the project name (and PyPI distribution) is `n-1`.
+Project name and PyPI distribution: `n-1`.
+Importable Python package: `core`.
 """
 
 from setuptools import setup, find_packages

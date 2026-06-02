@@ -1,8 +1,8 @@
-# Blutwerte App - Comprehensive Use Case Analysis
+# core App - Comprehensive Use Case Analysis
 
 ## Executive Summary
 
-This document outlines potential use cases for a comprehensive blood test and nutrition tracking application built on the **Blutwerte** platform.
+This document outlines potential use cases for a comprehensive blood test and nutrition tracking application built on the **core** platform.
 
 The system currently integrates four core pillars:
 
@@ -630,7 +630,7 @@ mood, energy, pain_level, symptoms
 ### Example: Wearable Device Integration
 
 ```python
-from blutwerte.diary import Diary, EntrySource, MedicationDiary
+from core.diary import Diary, EntrySource, MedicationDiary
 
 diary = Diary(user_id="user001")
 
@@ -690,7 +690,7 @@ Based on the user's requirements, here's what's now **completed** and what could
 
 ### ✅ Completed - Universal Diary Module
 
-The new `blutwerte.diary` module now provides **generic, extensible tracking** for ANY health metric:
+The new `core.diary` module now provides **generic, extensible tracking** for ANY health metric:
 
 | Category | Now Supported | Notes |
 |----------|--------------|-------|
@@ -737,7 +737,7 @@ The new `blutwerte.diary` module now provides **generic, extensible tracking** f
 ### Current Module Structure
 
 ```
-blutwerte/
+core/
 ├── diary/                      # NEW: Universal tracking
 │   └── __init__.py           # Diary, DiaryEntry, MetricDefinition
 ├── foods/                      # Food database
@@ -762,7 +762,7 @@ blutwerte/
 
 ## Conclusion
 
-The Blutwerte platform has the foundation to become a comprehensive **Personal Health Intelligence System**. By connecting blood test data with nutrition, medications, and activity, it can provide unprecedented personalized health insights.
+The core platform has the foundation to become a comprehensive **Personal Health Intelligence System**. By connecting blood test data with nutrition, medications, and activity, it can provide unprecedented personalized health insights.
 
 The key differentiator is the **holistic approach** - no other app combines all four pillars (blood, food, medication, activity) with scientific rigor and source tracking.
 
@@ -778,4 +778,4 @@ This positions the app not as a simple tracker, but as a **Personal Health Coach
 
 *Document Version: 1.1*  
 *Updated: February 2026*  
-*Blutwerte Project - Blood Test Intelligence*
+*core Project - Blood Test Intelligence*

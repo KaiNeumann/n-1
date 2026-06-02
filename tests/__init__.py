@@ -1,1 +1,1 @@
-# Tests for blutwerte package
+# Tests for core package

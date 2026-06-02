@@ -70,7 +70,6 @@ data/foodb/
 data/raw/
 *.xlsx
 *.xls
-!blutwerte/foods/data/legacy/**/*.py
 archive/**/original data/
 archive/**/*.zip
 archive/**/*.xlsx

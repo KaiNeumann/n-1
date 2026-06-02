@@ -1,6 +1,6 @@
 # N=1 Global TODO
 
-This file tracks future enhancements, ideas, and technical debt for the n-1 project (formerly Blutwerte).
+This file tracks future enhancements, ideas, and technical debt for the n-1 project (formerly core).
 
 ## 🎯 High Priority
 

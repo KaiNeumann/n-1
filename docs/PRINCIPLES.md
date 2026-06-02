@@ -92,7 +92,7 @@ is what gets referenced in diary entries and reports.
 
 ## 5. The tool is a consumer, not the source.
 
-The Python package (currently `blutwerte/`, on its way to `lib/n1/`)
+The Python package (currently `core/`, on its way to `lib/n1/`)
 reads the data, runs analysis, generates reports. It does not own the
 data. It does not hold the only copy of the data. It does not define
 the schema by class shape.
@@ -204,19 +204,19 @@ either bends or doesn't ship.
 The project is in transition. As of the N=1 rebrand:
 
 - ✅ Principles written (this document).
-- ✅ Directory layout: `blutwerte/` for the Python tool, `data/`,
+- ✅ Directory layout: `core/` for the Python tool, `data/`,
   `patients/`, `archive/` present.
 - ⚠️ Knowledge data is still Python-authored under
-  `blutwerte/foods/data/legacy/*.py`, `blutwerte/bloodtests/biomarkers_db.py`,
-  `blutwerte/medications/data/*.py`. This violates principle 5 today.
+  `core/foods/data/legacy/*.py`, `core/bloodtests/biomarkers_db.py`,
+  `core/medications/data/*.py`. This violates principle 5 today.
   The migration to JSON is planned and scripted; see
   `docs/MIGRATION_TO_JSON.md` (TODO).
 - ⚠️ Diary format not yet specified beyond this document. See
   `docs/DIARY_FORMAT.md` (TODO).
 - ⚠️ `MANIFEST.json` not yet generated. Will land with the first JSON
   knowledge file.
-- ⚠️ `lib/` vs `blutwerte/` rename: the Python package is still
-  `blutwerte` for backward compatibility. The `lib/n1/` rename is
+- ⚠️ `lib/` vs `core/` rename: the Python package is still
+  `core` for backward compatibility. The `lib/n1/` rename is
   tracked in the migration doc.
 
 The goal is for this "Current state" section to shrink to empty over

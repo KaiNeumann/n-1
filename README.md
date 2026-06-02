@@ -74,7 +74,7 @@ pip install -e ".[dev]"
 ### 1. Look Up a Biomarker
 
 ```python
-from blutwerte import get_biomarker
+from core import get_biomarker
 
 crp = get_biomarker("CRP")
 print(f"Name: {crp.name}")
@@ -85,8 +85,8 @@ print(f"Normal range: {crp.get_range_for_unit('mg/l')}")
 ### 2. Analyze a Blood Test with Medication Context
 
 ```python
-from blutwerte.patients.loader import load_patient
-from blutwerte.medications import MedicationAnalyzer
+from core.patients.loader import load_patient
+from core.medications import MedicationAnalyzer
 
 patient = load_patient('p001')
 meds = patient.get_current_medications()
@@ -109,7 +109,7 @@ print(analysis.explanation)
 ### 3. Search Medications Affecting a Biomarker
 
 ```python
-from blutwerte.medications import get_database as med_db
+from core.medications import get_database as med_db
 
 db = med_db()
 potassium_drugs = db.get_affecting_biomarker("Potassium")
@@ -121,7 +121,7 @@ for drug in potassium_drugs:
 ### 4. Analyze Food Intake Against a Biomarker
 
 ```python
-from blutwerte.foods import FoodDatabase, FoodAnalyzer, FoodIntake
+from core.foods import FoodDatabase, FoodAnalyzer, FoodIntake
 from datetime import datetime
 
 db = FoodDatabase()
@@ -139,7 +139,7 @@ print(result.net_effect)  # "increase"
 ### 5. Load Historical Blood Test Data
 
 ```python
-from blutwerte import load_blood_tests
+from core import load_blood_tests
 
 history = load_blood_tests("blutbild.csv")
 timeline = history.get_timeline("Cholesterin")
@@ -152,7 +152,7 @@ for date, value in timeline:
 
 ```
 n-1/
-├── blutwerte/             # Main Python package (the n=1 core)
+├── core/             # Main Python package (the n=1 core)
 │   ├── bloodtests/        # Biomarker database and CSV import/export
 │   ├── medications/       # Medication database and analysis engine
 │   ├── foods/             # 8,400+ foods, importers, RDI, analysis
@@ -251,7 +251,7 @@ This project is the direct successor of **`Food-and-Nutrition`**, the original
 n=1 project. Everything from the old project has been preserved:
 
 - All food data, importers, portion system, and RDI logic migrated to
-  `blutwerte/foods/`
+  `core/foods/`
 - The original source tree is preserved verbatim in `archive/food_legacy/` for
   reference
 - See `MIGRATION.md` and `MIGRATION_COMPLETE.md` for the full migration record

@@ -5,8 +5,8 @@ Analyze latest blood test results against the biomarker database
 
 import csv
 from datetime import datetime
-from blutwerte.bloodtests import BiomarkerDatabase
-from blutwerte.bloodtests import Category
+from core.bloodtests import BiomarkerDatabase
+from core.bloodtests import Category
 
 def parse_value(val):
     """Parse a numeric value from CSV"""

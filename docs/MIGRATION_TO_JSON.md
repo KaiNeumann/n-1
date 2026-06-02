@@ -8,40 +8,40 @@ executed by `tools/migrate_to_json.py`.
 
 | Entity      | Source                                  | Count | Target                                        | Done |
 |-------------|-----------------------------------------|------:|-----------------------------------------------|------|
-| Medications | `blutwerte/medications/data/*.py`       |    13 | `knowledge/medications/medications.jsonl`     | ✓    |
-| Biomarkers  | `blutwerte/bloodtests/biomarkers_db.py` |    99 | `knowledge/biomarkers/biomarkers.jsonl`       | ✓    |
-| Foods (BLS curated) | `blutwerte/foods/data/legacy/food_bls_migrated.py` | 74 | `knowledge/foods/bls_curated.jsonl`  | ✓    |
-| Foods (BLS full)    | `blutwerte/foods/data/legacy/food_bls_german_migrated.py` | 7,140 | `knowledge/foods/bls.jsonl` | ✓    |
-| Foods (Swiss)       | `blutwerte/foods/data/legacy/food_naehrwertdaten_ch_migrated.py` | 1,092 | `knowledge/foods/swiss.jsonl` | ✓    |
-| Foods (OFF)         | `blutwerte/foods/data/legacy/food_openfoodfacts_manual_migrated.py` | 74 | `knowledge/foods/openfoodfacts.jsonl` | ✓    |
-| Foods (Yazio)       | `blutwerte/foods/data/legacy/food_yazio_migrated.py` | 8 | `knowledge/foods/yazio.jsonl`         | ✓    |
-| Foods (manual)      | `blutwerte/foods/data/legacy/food_other_manual_migrated.py` | 31 | `knowledge/foods/manual.jsonl`     | ✓    |
-| Foods (priority)    | `blutwerte/foods/data/{vegetables,fruits,dairy,grains,proteins/*}.py` | 22 | `knowledge/foods/priority_*.jsonl` | ✓    |
-| Nutrients   | `blutwerte/foods/rdi.py`                |    10 | `knowledge/nutrients/nutrients.jsonl`         | ✓    |
-| Activities  | `blutwerte/activities/data/common_activities.py` |    58 | `knowledge/activities/activities.jsonl` | ✓    |
-| Units       | `blutwerte/foods/portions.py`           |    27 | `knowledge/units/portions.jsonl`              | ✓    |
+| Medications | `core/medications/data/*.py`       |    13 | `knowledge/medications/medications.jsonl`     | ✓    |
+| Biomarkers  | `core/bloodtests/biomarkers_db.py` |    99 | `knowledge/biomarkers/biomarkers.jsonl`       | ✓    |
+| Foods (BLS curated) | `core/foods/data/legacy/food_bls_migrated.py` | 74 | `knowledge/foods/bls_curated.jsonl`  | ✓    |
+| Foods (BLS full)    | `core/foods/data/legacy/food_bls_german_migrated.py` | 7,140 | `knowledge/foods/bls.jsonl` | ✓    |
+| Foods (Swiss)       | `core/foods/data/legacy/food_naehrwertdaten_ch_migrated.py` | 1,092 | `knowledge/foods/swiss.jsonl` | ✓    |
+| Foods (OFF)         | `core/foods/data/legacy/food_openfoodfacts_manual_migrated.py` | 74 | `knowledge/foods/openfoodfacts.jsonl` | ✓    |
+| Foods (Yazio)       | `core/foods/data/legacy/food_yazio_migrated.py` | 8 | `knowledge/foods/yazio.jsonl`         | ✓    |
+| Foods (manual)      | `core/foods/data/legacy/food_other_manual_migrated.py` | 31 | `knowledge/foods/manual.jsonl`     | ✓    |
+| Foods (priority)    | `core/foods/data/{vegetables,fruits,dairy,grains,proteins/*}.py` | 22 | `knowledge/foods/priority_*.jsonl` | ✓    |
+| Nutrients   | `core/foods/rdi.py`                |    10 | `knowledge/nutrients/nutrients.jsonl`         | ✓    |
+| Activities  | `core/activities/data/common_activities.py` |    58 | `knowledge/activities/activities.jsonl` | ✓    |
+| Units       | `core/foods/portions.py`           |    27 | `knowledge/units/portions.jsonl`              | ✓    |
 
 ### Wired up (JSONL preferred, Python fallback)
 
-- `blutwerte/medications/jsonl_loader.py` + `_load_all_medications` prefers JSONL.
-- `blutwerte/bloodtests/jsonl_loader.py` + `_initialize_biomarkers` prefers JSONL.
-- `blutwerte/foods/jsonl_loader.py` + `FoodDatabase.load_all` prefers JSONL.
-- `blutwerte/foods/jsonl_rdi_loader.py` + `_load_rdi_registry` prefers JSONL.
-- `blutwerte/activities/jsonl_loader.py` + `load_activities(source='auto')` prefers JSONL.
-- `blutwerte/foods/portions_jsonl_loader.py` + `_initialize_predefined_portions()`
+- `core/medications/jsonl_loader.py` + `_load_all_medications` prefers JSONL.
+- `core/bloodtests/jsonl_loader.py` + `_initialize_biomarkers` prefers JSONL.
+- `core/foods/jsonl_loader.py` + `FoodDatabase.load_all` prefers JSONL.
+- `core/foods/jsonl_rdi_loader.py` + `_load_rdi_registry` prefers JSONL.
+- `core/activities/jsonl_loader.py` + `load_activities(source='auto')` prefers JSONL.
+- `core/foods/portions_jsonl_loader.py` + `_initialize_predefined_portions()`
   loads the 27 Portion objects from JSONL and registers them as module
   globals at import time.
 
 ### Legacy Python data — removed
 
-- `blutwerte/medications/data/` (14 files) — removed in `8d07d9f`.
-- `blutwerte/bloodtests/biomarkers_db.py` Python fallback (8,303 lines) — removed in `a090e2e`.
-- `blutwerte/foods/data/` (18 files, 11.6 MB) — removed in `eef8fde`.
-- `blutwerte/foods/data/legacy/MIGRATION_SUMMARY.md` — removed in `eef8fde`.
-- `blutwerte/foods/rdi.py` (10 RDI_* constants + 3 default sources) — removed in `e7b63db`.
+- `core/medications/data/` (14 files) — removed in `8d07d9f`.
+- `core/bloodtests/biomarkers_db.py` Python fallback (8,303 lines) — removed in `a090e2e`.
+- `core/foods/data/` (18 files, 11.6 MB) — removed in `eef8fde`.
+- `core/foods/data/legacy/MIGRATION_SUMMARY.md` — removed in `eef8fde`.
+- `core/foods/rdi.py` (10 RDI_* constants + 3 default sources) — removed in `e7b63db`.
 - `enrich_foods_with_foodb.py`, `add_biomarker_effects.py` — obsolete one-off scripts, removed in `431a656`.
-- `blutwerte/activities/data/` (2 files, 55 KB) — removed in `2f70313`.
-- `blutwerte/foods/portions.py` hard-coded portion definitions (27 calls) — replaced by JSONL loader in `3129725`.
+- `core/activities/data/` (2 files, 55 KB) — removed in `2f70313`.
+- `core/foods/portions.py` hard-coded portion definitions (27 calls) — replaced by JSONL loader in `3129725`.
 
 ### Open follow-ups
 
@@ -128,12 +128,12 @@ divergence is caught early.
 During the transition (after JSONL is written, before Python source
 is deleted):
 
-- `blutwerte/foods/database.py`, `blutwerte/bloodtests/biomarkers_db.py`,
-  `blutwerte/medications/database.py` are updated to **prefer JSONL**
+- `core/foods/database.py`, `core/bloodtests/biomarkers_db.py`,
+  `core/medications/database.py` are updated to **prefer JSONL**
   if it exists, falling back to Python on missing files. This lets us
   migrate one entity type at a time.
 - Each migrated entity gets a new top-level loader module
-  (`blutwerte/foods/jsonl_loader.py`, etc.) that is the path forward.
+  (`core/foods/jsonl_loader.py`, etc.) that is the path forward.
 - The Python source files stay in tree for at least one release, marked
   as legacy in their docstrings, and are deleted once the round-trip
   test passes for every entity.
@@ -162,10 +162,10 @@ always shows the Python file before its JSONL replacement.
   heterogeneous — sometimes per-100g, sometimes per-serving, sometimes
   with mixed units. The converter assumes per-100g and logs a
   warning on suspect values (e.g. calories > 900 kcal/100g).
-- **RDI personalization**: `blutwerte/foods/rdi.py` mixes static data
+- **RDI personalization**: `core/foods/rdi.py` mixes static data
   and personalizing functions. Only the static data goes into
   `knowledge/nutrients.json`; the functions stay in
-  `blutwerte/foods/rdi.py` as the consumer.
+  `core/foods/rdi.py` as the consumer.
 - **Cooklang recipes**: deferred; current `receipts.py` is in
   `archive/food_legacy/` and will be re-encoded as Cooklang files
   under `knowledge/recipes/` as a separate step.
@@ -173,7 +173,7 @@ always shows the Python file before its JSONL replacement.
 ## Order of execution
 
 1. **Migrations** (this PR): medications → biomarkers → foods → RDI → activities → units.
-2. **JSONL loaders** in `blutwerte/` (separate commits).
+2. **JSONL loaders** in `core/` (separate commits).
 3. **Database modules** updated to prefer JSONL (separate commits).
 4. **Deletion** of Python data (one commit per entity, gated on
    round-trip + MANIFEST).

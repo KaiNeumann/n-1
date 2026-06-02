@@ -435,7 +435,7 @@ For multi-unit support:
 **Created:** 2026-02-16
 **Purpose:** Reference guide for verifying blood test biomarker data
 **Scope:** International standards with focus on German resources
-**Intended Use:** Development and validation of the Blutwerte Python library
+**Intended Use:** Development and validation of the core Python library
 
 **Next Steps:**
 1. Verify current 83 biomarkers against DGKL/Mayo Clinic ranges
