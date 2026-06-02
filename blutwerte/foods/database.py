@@ -192,19 +192,21 @@ class FoodDatabase:
     
     def load_from_module(self, module_name: str) -> None:
         """
-        Load foods from a data module.
-        
+        Load foods from a Python data module. Historical helper for
+        custom add-on modules. The shipped data is in
+        knowledge/foods/*.jsonl and is loaded by load_all().
+
         Args:
             module_name: Name of module containing food factory functions
-            
+
         Example:
-            >>> db.load_from_module("blutwerte.foods.data.vegetables")
+            >>> db.load_from_module("myproject.custom_foods")
         """
         import importlib
-        
+
         try:
             module = importlib.import_module(module_name)
-            
+
             # Look for factory functions (create_* functions)
             for attr_name in dir(module):
                 if attr_name.startswith("create_"):
@@ -218,41 +220,19 @@ class FoodDatabase:
                             print(f"Warning: Could not create food from {attr_name}: {e}")
         except ImportError as e:
             raise ImportError(f"Could not import module {module_name}: {e}")
-    
+
     def load_all(self) -> None:
         """
-        Load all foods. Prefers JSONL under knowledge/foods/, falls back to Python.
+        Load all foods from the JSONL knowledge base.
         """
-        from .jsonl_loader import load_foods_from_jsonl, load_foods_from_python
+        from .jsonl_loader import load_foods_from_jsonl
 
         loaded = load_foods_from_jsonl()
-        if not loaded:
-            loaded = load_foods_from_python()
         for food in loaded.values():
             try:
                 self.add(food)
             except ValueError:
                 continue  # duplicate name from cross-source overlap
-
-    def _load_all_python(self) -> None:
-        """Legacy Python-authored food loader. Only used as fallback."""
-        modules = [
-            "blutwerte.foods.data.vegetables",
-            "blutwerte.foods.data.fruits",
-            "blutwerte.foods.data.proteins.meat",
-            "blutwerte.foods.data.proteins.fish",
-            "blutwerte.foods.data.proteins.eggs",
-            "blutwerte.foods.data.proteins.legumes",
-            "blutwerte.foods.data.proteins.plant",
-            "blutwerte.foods.data.dairy",
-            "blutwerte.foods.data.grains",
-        ]
-
-        for module in modules:
-            try:
-                self.load_from_module(module)
-            except ImportError:
-                pass  # Module might not exist yet
 
 
 # Global database instance

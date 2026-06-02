@@ -267,8 +267,11 @@ def _extract_upstream_id(attr_name: str) -> Optional[str]:
 def _walk_food_module(module_name: str, source: str) -> List[Dict[str, Any]]:
     try:
         module = importlib.import_module(module_name)
-    except Exception as exc:
+    except (ImportError, ModuleNotFoundError) as exc:
         print(f"  WARN  could not import {module_name}: {exc}")
+        return []
+    except Exception as exc:
+        print(f"  WARN  error importing {module_name}: {exc}")
         return []
 
     rows: List[Dict[str, Any]] = []
