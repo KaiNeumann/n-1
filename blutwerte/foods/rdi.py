@@ -246,18 +246,27 @@ RDI_ZINC = RDI(
 
 
 # RDI registry
-_rdi_registry: Dict[str, RDI] = {
-    "vitamin k": RDI_VITAMIN_K,
-    "iron": RDI_IRON,
-    "folate": RDI_FOLATE,
-    "potassium": RDI_POTASSIUM,
-    "vitamin c": RDI_VITAMIN_C,
-    "calcium": RDI_CALCIUM,
-    "vitamin b12": RDI_VITAMIN_B12,
-    "vitamin d": RDI_VITAMIN_D,
-    "magnesium": RDI_MAGNESIUM,
-    "zinc": RDI_ZINC,
-}
+def _load_rdi_registry() -> Dict[str, RDI]:
+    """Prefer JSONL under knowledge/nutrients/, fall back to Python definitions."""
+    from .jsonl_rdi_loader import load_rdis
+    loaded = load_rdis()
+    if loaded:
+        return loaded
+    return {
+        "vitamin k": RDI_VITAMIN_K,
+        "iron": RDI_IRON,
+        "folate": RDI_FOLATE,
+        "potassium": RDI_POTASSIUM,
+        "vitamin c": RDI_VITAMIN_C,
+        "calcium": RDI_CALCIUM,
+        "vitamin b12": RDI_VITAMIN_B12,
+        "vitamin d": RDI_VITAMIN_D,
+        "magnesium": RDI_MAGNESIUM,
+        "zinc": RDI_ZINC,
+    }
+
+
+_rdi_registry: Dict[str, RDI] = _load_rdi_registry()
 
 
 def get_rdi(nutrient_name: str) -> Optional[RDI]:

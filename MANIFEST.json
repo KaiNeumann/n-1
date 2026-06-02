@@ -1,5 +1,5 @@
 {
-  "file_count": 17,
+  "file_count": 18,
   "files": {
     "knowledge/biomarkers/biomarkers.jsonl": {
       "sha256": "9693e7c06d1b99a7ea8896b525e9b85cbc24f2cc11d747b4ed1aefa88475ef22",
@@ -68,9 +68,13 @@
     "knowledge/medications/medications.jsonl": {
       "sha256": "cf4feaf5f156cb1ad5fed9d94de18f406d7df2c7f0eed1fe12b4ee4d6fa511e3",
       "size": 135194
+    },
+    "knowledge/nutrients/nutrients.jsonl": {
+      "sha256": "f3069b7ad3d7970d7c9f1ffea44ef0cdcaba6f83de158527b8e25b02ff7c9f0c",
+      "size": 5822
     }
   },
-  "generated_at": "2026-06-02T14:24:25.106042+00:00",
+  "generated_at": "2026-06-02T14:43:54.213453+00:00",
   "knowledge_root": "knowledge/",
   "schema_version": 1
 }

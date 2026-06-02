@@ -39,6 +39,7 @@ from blutwerte.medications.models import Medication            # noqa: E402
 from blutwerte.medications.effects.dose_models import DoseEffectModel  # noqa: E402
 from blutwerte.bloodtests.models import Biomarker              # noqa: E402
 from blutwerte.foods.models import Food                         # noqa: E402
+from blutwerte.foods.rdi import RDI                            # noqa: E402
 
 SCHEMA_VERSION = 1
 
@@ -302,12 +303,45 @@ def migrate_foods(out_dir: Path, dry_run: bool = False) -> int:
 
 
 # ---------------------------------------------------------------------------
+# Nutrients (RDI)
+# ---------------------------------------------------------------------------
+
+def migrate_nutrients(out_dir: Path, dry_run: bool = False) -> int:
+    print("=== nutrients ===")
+    from blutwerte.foods.rdi import get_all_rdis
+
+    registry = get_all_rdis()
+    print(f"  collected {len(registry)} RDI entries")
+
+    def _rdi_to_row(name: str, rdi: "RDI") -> Dict[str, Any]:
+        raw = to_jsonable(rdi)
+        raw["id"] = n1_id(name)
+        raw["name"] = name
+        raw["schema_version"] = SCHEMA_VERSION
+        raw["source"] = "n1"
+        return raw
+
+    target = out_dir / "knowledge" / "nutrients" / "nutrients.jsonl"
+    if dry_run:
+        print(f"  DRY  would write {target} ({len(registry)} rows)")
+        return len(registry)
+
+    rows = [_rdi_to_row(name, rdi) for name, rdi in sorted(registry.items())]
+    n = write_jsonl(target, rows)
+    print(f"  wrote {n} rows to {target}")
+    return n
+
+
+# ---------------------------------------------------------------------------
 # Driver
 # ---------------------------------------------------------------------------
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.strip().splitlines()[0])
-    parser.add_argument("what", choices=["medications", "biomarkers", "foods", "all"])
+    parser.add_argument(
+        "what",
+        choices=["medications", "biomarkers", "foods", "nutrients", "all"],
+    )
     parser.add_argument("--out", type=Path, default=REPO_ROOT,
                         help="Output directory (default: repo root)")
     parser.add_argument("--dry-run", action="store_true")
@@ -323,6 +357,8 @@ def main() -> int:
         counts["biomarkers"] = migrate_biomarkers(args.out, args.dry_run)
     if args.what in ("foods", "all"):
         counts["foods"] = migrate_foods(args.out, args.dry_run)
+    if args.what in ("nutrients", "all"):
+        counts["nutrients"] = migrate_nutrients(args.out, args.dry_run)
 
     print("=== summary ===")
     for k, v in counts.items():
