@@ -5,11 +5,10 @@ This module provides models and analysis for understanding how physical activiti
 affect blood test values, similar to how foods affect biomarkers through nutrition.
 
 Example:
-    >>> from blutwerte.activities import Activity, ActivitySession
-    >>> from blutwerte.activities.data import create_running
+    >>> from blutwerte.activities import Activity, ActivitySession, load_activities
     >>>
-    >>> # Create activity
-    >>> running = create_running()
+    >>> # Look up an activity
+    >>> running = load_activities()["running"]
     >>>
     >>> # Log a session
     >>> session = ActivitySession(

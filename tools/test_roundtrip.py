@@ -103,7 +103,7 @@ def _gather_original_rdis() -> Dict[str, RDI]:
 
 def _gather_original_activities() -> Dict[str, Activity]:
     from blutwerte.activities import load_activities
-    return load_activities(source="python")
+    return load_activities()
 
 
 def _check_nutrients(rows: List[dict], originals: Dict[str, RDI]) -> List[str]:
