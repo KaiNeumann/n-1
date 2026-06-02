@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/KaiNeumann/n-1/main/docs/schemas/food.schema.json",
+  "title": "n-1 Food row",
+  "description": "JSON Schema for one food row in knowledge/foods/*.jsonl.",
+  "type": "object",
+  "required": ["id", "schema_version", "source", "name", "nutrition_data"],
+  "properties": {
+    "id":            { "$ref": "_common.json#/$defs/id" },
+    "schema_version": { "$ref": "_common.json#/$defs/schema_version" },
+    "source": {
+      "type": "string",
+      "description": "Source file slug: bls, bls_curated, swiss, openfoodfacts, yazio, manual, priority_*, etc."
+    },
+    "upstream_id": { "type": ["string", "null"] },
+
+    "name":     { "type": "string", "minLength": 1 },
+    "name_de":  { "type": "string" },
+    "category": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "_common.json#/$defs/category_enum" }
+      ]
+    },
+
+    "nutrition_data":     { "$ref": "_common.json#/$defs/nutrition_data" },
+    "nutrition_per_100g": { "$ref": "_common.json#/$defs/nutrition_data" },
+    "nutrition_sources":  { "type": "array", "items": { "$ref": "_common.json#/$defs/data_source" } },
+
+    "effects": { "type": "array", "items": { "$ref": "#/$defs/food_effect" } },
+    "custom_portions": {
+      "type": "object",
+      "description": "Food-specific portion overrides, e.g. {'scheibe': 30} for 30g slices.",
+      "additionalProperties": { "type": "number" }
+    },
+    "weight": {
+      "type": "number",
+      "description": "Selection weight for priority foods; higher = more likely to be surfaced."
+    }
+  },
+  "additionalProperties": true,
+
+  "$defs": {
+    "food_effect": {
+      "type": "object",
+      "required": ["target_type", "target_name", "direction"],
+      "properties": {
+        "target_type": { "enum": ["biomarker", "vital_sign", "symptom"] },
+        "target_name": { "type": "string" },
+        "direction":   { "enum": ["increase", "decrease", "variable", "none"] },
+        "mechanism":   { "type": "string" },
+        "certainty":   { "enum": ["established", "probable", "variable", "speculative"] },
+        "per_serving": { "type": "boolean" },
+        "modifiers":   { "type": "array", "items": { "type": "object" } },
+        "sources":     { "type": "array", "items": { "$ref": "_common.json#/$defs/data_source" } },
+        "notes":       { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/KaiNeumann/n-1/main/docs/schemas/nutrient.schema.json",
+  "title": "n-1 Nutrient (RDI) row",
+  "description": "JSON Schema for one RDI row in knowledge/nutrients/nutrients.jsonl.",
+  "type": "object",
+  "required": ["id", "schema_version", "source", "name", "unit"],
+  "properties": {
+    "id":            { "$ref": "_common.json#/$defs/id" },
+    "schema_version": { "$ref": "_common.json#/$defs/schema_version" },
+    "source":        { "$ref": "_common.json#/$defs/source" },
+
+    "name":     { "type": "string", "minLength": 1, "description": "Lowercased nutrient name used as registry key." },
+    "unit":     { "type": "string", "minLength": 1, "description": "Unit string e.g. 'mg/day', 'mcg DFE/day'." },
+
+    "minimum":   { "type": ["number", "null"] },
+    "reference": { "type": ["number", "null"] },
+    "maximum":   { "type": ["number", "null"] },
+
+    "comments": { "type": "array", "items": { "type": "string" } },
+    "sources":  { "type": "array", "items": { "$ref": "_common.json#/$defs/data_source" } }
+  },
+  "additionalProperties": true
+}

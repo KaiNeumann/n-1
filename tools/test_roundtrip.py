@@ -223,6 +223,18 @@ def main() -> int:
         if len(errs) > 50:
             print(f"  ... and {len(errs) - 50} more")
         return 1
+
+    # Schema validation (delegates to tools/validate_schemas.py)
+    print("--- schema validation ---")
+    import subprocess
+    r = subprocess.run(
+        [sys.executable, str(REPO_ROOT / "tools" / "validate_schemas.py")],
+        capture_output=True, text=True,
+    )
+    print(r.stdout.rstrip())
+    if r.returncode != 0:
+        print(r.stderr.rstrip())
+        return 1
     print("OK")
     return 0
 

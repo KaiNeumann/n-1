@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/KaiNeumann/n-1/main/docs/schemas/_common.json",
+  "title": "n-1 common sub-schemas",
+  "description": "Reusable sub-schemas for n-1 entity JSONL rows. Entity schemas reference these via $ref.",
+  "type": "object",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+:[a-z0-9_\\-]+$",
+      "description": "External ID <source>:<id> (e.g. 'bls:BLS_0123', 'off:4053400205298') or project-local 'n1:<slug>'."
+    },
+    "n1_id": {
+      "type": "string",
+      "pattern": "^n1:[a-z0-9_\\-]+$",
+      "description": "Project-local identifier (slug from the entity name)."
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Schema version of the row. Current is 1; breaking changes bump this."
+    },
+    "source": {
+      "type": "string",
+      "description": "Origin label for the row. Project rows use 'n1'."
+    },
+    "iso_date": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date (YYYY-MM-DD)."
+    },
+    "iso_datetime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime with timezone."
+    },
+    "data_source": {
+      "type": "object",
+      "description": "Provenance for a fact or claim.",
+      "properties": {
+        "url": { "type": "string" },
+        "title": { "type": "string" },
+        "source_type": { "type": "string" },
+        "access_date": { "$ref": "#/$defs/iso_date" },
+        "doi": { "type": ["string", "null"] }
+      },
+      "required": ["url", "title", "source_type"],
+      "additionalProperties": true
+    },
+    "quote": {
+      "type": "object",
+      "description": "A short attributed snippet (no URL, just a citation).",
+      "properties": {
+        "text": { "type": "string" },
+        "source": { "type": "string" }
+      },
+      "required": ["text", "source"],
+      "additionalProperties": true
+    },
+    "nutrition_data": {
+      "type": "object",
+      "description": "Per-100g nutrition values. Keys are lowercase nutrient names; values are numbers (g, mg, or mcg depending on the nutrient).",
+      "additionalProperties": { "type": "number" }
+    },
+    "category_enum": {
+      "type": "string",
+      "description": "One of the predefined food categories observed in the data set.",
+      "enum": [
+        "vegetable", "fruit", "meat", "fish", "legume", "protein", "plant_protein",
+        "dairy", "milk", "yogurt", "cheese", "cereal", "grain", "pasta",
+        "bread", "spices", "spice", "beverage", "beer", "alcohol", "oil",
+        "sweet", "snack", "supplement", "spread", "prepared", "sauce", "sausage", "other"
+      ]
+    }
+  }
+}

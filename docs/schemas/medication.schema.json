@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/KaiNeumann/n-1/main/docs/schemas/medication.schema.json",
+  "title": "n-1 Medication row",
+  "description": "JSON Schema for one medication row in knowledge/medications/medications.jsonl. See _common.json for shared sub-schemas.",
+  "type": "object",
+  "required": ["id", "schema_version", "source", "name"],
+  "properties": {
+    "id":            { "$ref": "_common.json#/$defs/id" },
+    "schema_version": { "$ref": "_common.json#/$defs/schema_version" },
+    "source":        { "$ref": "_common.json#/$defs/source" },
+
+    "name":     { "type": "string", "minLength": 1 },
+    "name_de":  { "type": "string" },
+    "synonyms": { "type": "array", "items": { "type": "string" } },
+
+    "drug_class":    { "type": ["string", "null"] },
+    "drug_subclass": { "type": ["string", "null"] },
+    "brand_names":   { "type": "array", "items": { "type": "string" } },
+
+    "available_doses": {
+      "type": "array",
+      "description": "List of [numeric_dose, unit] pairs.",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "prefixItems": [
+          { "type": "number" },
+          { "type": "string" }
+        ],
+        "items": false
+      }
+    },
+    "typical_dose_range": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        { "type": "number" },
+        { "type": "number" }
+      ],
+      "items": false
+    },
+
+    "controlled_substance":  { "type": "boolean" },
+    "requires_prescription": { "type": "boolean" },
+    "pregnancy_category":    { "type": ["string", "null"] },
+    "fda_label_url":         { "type": "string" },
+    "ema_label_url":         { "type": "string" },
+    "last_updated":          { "$ref": "_common.json#/$defs/iso_date" },
+
+    "effects": { "type": "array", "items": { "$ref": "#/$defs/medication_effect" } },
+    "drug_interactions":       { "type": "array", "items": { "$ref": "#/$defs/drug_interaction" } },
+    "contraindications":       { "type": "array", "items": { "$ref": "#/$defs/citation" } },
+    "indications":             { "type": "array", "items": { "$ref": "#/$defs/citation" } },
+    "monitoring_protocol":     { "type": "array", "items": { "$ref": "#/$defs/monitoring" } },
+    "primary_sources":         { "type": "array", "items": { "$ref": "#/$defs/citation" } },
+    "black_box_warnings":      { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true,
+
+  "$defs": {
+    "citation": {
+      "type": "object",
+      "required": ["text", "source"],
+      "properties": {
+        "text":       { "type": "string" },
+        "source":     { "type": "string" },
+        "source_type": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "drug_interaction": {
+      "type": "object",
+      "required": ["interacting_drug", "severity"],
+      "properties": {
+        "interacting_drug":  { "type": "string" },
+        "severity":          { "enum": ["minor", "moderate", "major", "contraindicated"] },
+        "effect_description": { "type": "string" },
+        "mechanism":         { "type": "string" },
+        "management":        { "type": "string" },
+        "evidence":          { "type": "array" }
+      },
+      "additionalProperties": true
+    },
+    "monitoring": {
+      "type": "object",
+      "required": ["target_name", "target_type"],
+      "properties": {
+        "target_type":      { "type": "string" },
+        "target_name":      { "type": "string" },
+        "frequency":        { "type": "string" },
+        "condition":        { "type": "string" },
+        "baseline_required": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "medication_effect": {
+      "type": "object",
+      "required": ["target_type", "target_name", "direction"],
+      "properties": {
+        "target_type":   { "enum": ["biomarker", "vital_sign", "symptom", "clinical_outcome"] },
+        "target_name":   { "type": "string" },
+        "target_synonyms": { "type": "array", "items": { "type": "string" } },
+        "direction":     { "enum": ["increase", "decrease", "variable", "none"] },
+        "magnitude":     { "type": "string" },
+        "frequency_category": { "type": "string" },
+        "frequency_percentage": { "type": "number" },
+        "likelihood_score": { "type": "string" },
+        "mechanism":     { "type": "string" },
+        "duration":      { "type": "string" },
+        "time_to_onset": { "type": "string" },
+        "dose_dependent": { "type": "boolean" },
+        "requires_monitoring": { "type": "boolean" },
+        "clinical_significance": { "type": "string" },
+        "administration_time_relevant": { "type": "boolean" },
+        "monitoring_recommendation": { "type": "string" },
+        "outcome_metric":      { "type": "string" },
+        "outcome_timeframe":   { "type": "string" },
+        "symptom_description": { "type": "string" },
+        "evidence":     { "type": "array" },
+        "risk_factors": { "type": "array" },
+        "protective_factors": { "type": "array" },
+        "dose_model":   { "type": ["object", "null"] }
+      },
+      "additionalProperties": true
+    }
+  }
+}

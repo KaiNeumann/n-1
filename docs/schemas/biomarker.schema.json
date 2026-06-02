@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/KaiNeumann/n-1/main/docs/schemas/biomarker.schema.json",
+  "title": "n-1 Biomarker row",
+  "description": "JSON Schema for one biomarker row in knowledge/biomarkers/biomarkers.jsonl.",
+  "type": "object",
+  "required": ["id", "schema_version", "source", "name", "ranges"],
+  "properties": {
+    "id":            { "$ref": "_common.json#/$defs/id" },
+    "schema_version": { "$ref": "_common.json#/$defs/schema_version" },
+    "source":        { "$ref": "_common.json#/$defs/source" },
+
+    "name":     { "type": "string", "minLength": 1 },
+    "name_de":  { "type": "string" },
+    "synonyms": { "type": "array", "items": { "type": "string" } },
+
+    "categories": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/category" }
+    },
+    "organs": { "type": "array", "items": { "type": "string" } },
+
+    "ranges": {
+      "type": "object",
+      "description": "Map from unit string (e.g. 'mg/dl') to a list of reference ranges for that unit.",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "$ref": "#/$defs/reference_range" }
+      }
+    },
+
+    "description":    { "type": "array", "items": { "$ref": "_common.json#/$defs/quote" } },
+    "diet":           { "type": "array", "items": { "$ref": "_common.json#/$defs/quote" } },
+    "interpretation": { "$ref": "#/$defs/interpretation" },
+
+    "wikipedia_url": { "type": "string" }
+  },
+  "additionalProperties": true,
+
+  "$defs": {
+    "category": {
+      "enum": [
+        "blood_chemistry", "blood_count", "bone_health", "coagulation",
+        "enzymes", "hormones", "immunity", "iron_markers", "lipids",
+        "misc", "protein_markers", "stress_inflammation", "tumor_markers",
+        "vitamins_minerals", "kidney_function", "liver_function",
+        "electrolytes", "thyroid", "glucose_metabolism"
+      ]
+    },
+    "range_condition": {
+      "type": ["object", "null"],
+      "properties": {
+        "gender":   { "enum": ["male", "female", "any", null] },
+        "age_min":  { "type": ["number", "null"] },
+        "age_max":  { "type": ["number", "null"] },
+        "pregnant": { "type": ["boolean", "null"] },
+        "notes":    { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "reference_range": {
+      "type": "object",
+      "required": ["label", "unit"],
+      "properties": {
+        "label":     { "type": "string" },
+        "unit":      { "type": "string" },
+        "min_value": { "type": ["number", "null"] },
+        "max_value": { "type": ["number", "null"] },
+        "conditions": { "$ref": "#/$defs/range_condition" },
+        "range_func": { "type": ["string", "null"], "description": "Always null in JSONL; placeholder for the function reference." },
+        "remarks":   { "type": "array", "items": { "$ref": "_common.json#/$defs/quote" } }
+      },
+      "additionalProperties": true
+    },
+    "interpretation": {
+      "type": "object",
+      "properties": {
+        "low":    { "type": "array", "items": { "$ref": "_common.json#/$defs/quote" } },
+        "normal": { "type": "array", "items": { "$ref": "_common.json#/$defs/quote" } },
+        "high":   { "type": "array", "items": { "$ref": "_common.json#/$defs/quote" } }
+      },
+      "additionalProperties": true
+    }
+  }
+}
