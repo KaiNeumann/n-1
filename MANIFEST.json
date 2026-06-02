@@ -1,0 +1,76 @@
+{
+  "file_count": 17,
+  "files": {
+    "knowledge/biomarkers/biomarkers.jsonl": {
+      "sha256": "9693e7c06d1b99a7ea8896b525e9b85cbc24f2cc11d747b4ed1aefa88475ef22",
+      "size": 298616
+    },
+    "knowledge/foods/bls.jsonl": {
+      "sha256": "a481cb2eb2245f8dc9c3d3c2acf1a6a7352d5b2a47ca1ccf80a314cfd669d6ba",
+      "size": 6871235
+    },
+    "knowledge/foods/bls_curated.jsonl": {
+      "sha256": "9913dbcd54464a1a64dc1265e3fc21540a706fdf478d80dc0d4a647f30a4152b",
+      "size": 57765
+    },
+    "knowledge/foods/manual.jsonl": {
+      "sha256": "06505879491765a7d34e71f8d221a753b2c6f2136085679d9eefe2fc2d138ccc",
+      "size": 18597
+    },
+    "knowledge/foods/openfoodfacts.jsonl": {
+      "sha256": "04c3b22cc5aa566cfbda41511ba038e5c7fdcc96cc269a82e2027bcc2b9a4476",
+      "size": 42103
+    },
+    "knowledge/foods/priority_dairy.jsonl": {
+      "sha256": "d6c791cff628917c67be4e8565c0be74e2f9ca97213138beb50d35a9e452437c",
+      "size": 5698
+    },
+    "knowledge/foods/priority_fruits.jsonl": {
+      "sha256": "d88773680ac0102a8279230d2b0188833fd7686d5101b28e786846579919054d",
+      "size": 5264
+    },
+    "knowledge/foods/priority_grains.jsonl": {
+      "sha256": "b3c5c801b39f733e5fa17665dc214756dbdd1181b8a4ad1afe28245deacd06dc",
+      "size": 3643
+    },
+    "knowledge/foods/priority_proteins_eggs.jsonl": {
+      "sha256": "e694ab8662c2cffaa4d3bf12e6b5938ecd7155d03e964de8ba05bbb00025174e",
+      "size": 1854
+    },
+    "knowledge/foods/priority_proteins_fish.jsonl": {
+      "sha256": "b603ab8d23e39f97e713d11241b0f62e00f9e8b31db82f0cc52179ef7663e214",
+      "size": 1855
+    },
+    "knowledge/foods/priority_proteins_legumes.jsonl": {
+      "sha256": "e41b6f0575eac8fb6aa0901b780d5670ec1ae53433ecbb387951fbb58b835e68",
+      "size": 2258
+    },
+    "knowledge/foods/priority_proteins_meat.jsonl": {
+      "sha256": "dbb1832ced60f1eccee8b842493bc474a5b911aafa48b5eb0dc9bd3358b3270c",
+      "size": 3457
+    },
+    "knowledge/foods/priority_proteins_plant.jsonl": {
+      "sha256": "c0d67eba823cf49c43f29a174f3ac991c806c15b212ed0ec7a47ac3058b7766a",
+      "size": 2342
+    },
+    "knowledge/foods/priority_vegetables.jsonl": {
+      "sha256": "f48921dc7fd25727d589f29ea4fad8e61c54f622a018ed528f13277a3584a9f6",
+      "size": 10598
+    },
+    "knowledge/foods/swiss.jsonl": {
+      "sha256": "56fcb51dc5fa9c44f8beab384fa197af6292457e66c689cb47235af8e26cc513",
+      "size": 1086968
+    },
+    "knowledge/foods/yazio.jsonl": {
+      "sha256": "9dc6b43d0115abb2569da7b6c80ea8afafe2c8bb7eafba33b610ea17fa6ba0b3",
+      "size": 6180
+    },
+    "knowledge/medications/medications.jsonl": {
+      "sha256": "cf4feaf5f156cb1ad5fed9d94de18f406d7df2c7f0eed1fe12b4ee4d6fa511e3",
+      "size": 135194
+    }
+  },
+  "generated_at": "2026-06-02T14:24:25.106042+00:00",
+  "knowledge_root": "knowledge/",
+  "schema_version": 1
+}
