@@ -114,10 +114,13 @@ def write_jsonl(path: Path, rows: Iterable[Dict[str, Any]]) -> int:
 
 def _collect_medication_modules() -> List[Tuple[str, Any]]:
     """Find every module in blutwerte.medications.data that creates medications."""
-    from blutwerte.medications import data as meds_data
-    from blutwerte.medications.data import vitamins
-
     modules: List[Tuple[str, Any]] = []
+    try:
+        from blutwerte.medications import data as meds_data
+    except ImportError:
+        print("  WARN  blutwerte.medications.data not present (already deleted)")
+        return modules
+
     for _, modname, _ in pkgutil.iter_modules(meds_data.__path__, meds_data.__name__ + "."):
         try:
             modules.append((modname, importlib.import_module(modname)))
@@ -125,6 +128,7 @@ def _collect_medication_modules() -> List[Tuple[str, Any]]:
             print(f"  WARN  could not import {modname}: {exc}")
 
     try:
+        from blutwerte.medications.data import vitamins
         for _, modname, _ in pkgutil.iter_modules(vitamins.__path__, vitamins.__name__ + "."):
             try:
                 modules.append((modname, importlib.import_module(modname)))
