@@ -28,11 +28,20 @@ executed by `tools/migrate_to_json.py`.
 - `blutwerte/foods/jsonl_loader.py` + `FoodDatabase.load_all` prefers JSONL.
 - `blutwerte/foods/jsonl_rdi_loader.py` + `_load_rdi_registry` prefers JSONL.
 - `blutwerte/activities/jsonl_loader.py` + `load_activities(source='auto')` prefers JSONL.
-- `blutwerte/foods/portions_jsonl_loader.py` audits the live PortionRegistry; the
-  JSONL is the formal data representation. The Python registry remains the
-  live consumer at import time (it constructs the 27 Portion objects from the
-  same name/weight tuples). Future refactor: make `portions.py` initialize
-  from JSONL.
+- `blutwerte/foods/portions_jsonl_loader.py` + `_initialize_predefined_portions()`
+  loads the 27 Portion objects from JSONL and registers them as module
+  globals at import time.
+
+### Legacy Python data — removed
+
+- `blutwerte/medications/data/` (14 files) — removed in `8d07d9f`.
+- `blutwerte/bloodtests/biomarkers_db.py` Python fallback (8,303 lines) — removed in `a090e2e`.
+- `blutwerte/foods/data/` (18 files, 11.6 MB) — removed in `eef8fde`.
+- `blutwerte/foods/data/legacy/MIGRATION_SUMMARY.md` — removed in `eef8fde`.
+- `blutwerte/foods/rdi.py` (10 RDI_* constants + 3 default sources) — removed in `e7b63db`.
+- `enrich_foods_with_foodb.py`, `add_biomarker_effects.py` — obsolete one-off scripts, removed in `431a656`.
+- `blutwerte/activities/data/` (2 files, 55 KB) — removed in `2f70313`.
+- `blutwerte/foods/portions.py` hard-coded portion definitions (27 calls) — replaced by JSONL loader in `3129725`.
 
 ### Open follow-ups
 
