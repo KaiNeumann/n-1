@@ -7,10 +7,10 @@ affect blood test values, similar to how foods affect biomarkers through nutriti
 Example:
     >>> from blutwerte.activities import Activity, ActivitySession
     >>> from blutwerte.activities.data import create_running
-    >>> 
+    >>>
     >>> # Create activity
     >>> running = create_running()
-    >>> 
+    >>>
     >>> # Log a session
     >>> session = ActivitySession(
     ...     activity=running,
@@ -18,7 +18,7 @@ Example:
     ...     intensity=IntensityLevel.MODERATE,
     ...     timestamp=datetime.now()
     ... )
-    >>> 
+    >>>
     >>> # Check effects
     >>> effects = session.get_effects()
     >>> for effect in effects:
@@ -33,6 +33,7 @@ from .models import (
     ActivityCategory,
     IntensityLevel,
 )
+from .jsonl_loader import load_activities, load_activities_from_jsonl, load_activities_from_python
 
 __all__ = [
     # Models
@@ -43,4 +44,8 @@ __all__ = [
     # Enums
     "ActivityCategory",
     "IntensityLevel",
+    # JSONL loaders
+    "load_activities",
+    "load_activities_from_jsonl",
+    "load_activities_from_python",
 ]

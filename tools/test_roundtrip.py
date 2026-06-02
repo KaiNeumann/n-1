@@ -23,6 +23,8 @@ sys.path.insert(0, str(REPO_ROOT))
 from blutwerte.medications.models import Medication            # noqa: E402
 from blutwerte.bloodtests.models import Biomarker              # noqa: E402
 from blutwerte.foods.models import Food                         # noqa: E402
+from blutwerte.foods.rdi import RDI                            # noqa: E402
+from blutwerte.activities.models import Activity               # noqa: E402
 
 
 REQUIRED_FIELDS = {"id", "schema_version", "source", "name"}
@@ -94,6 +96,36 @@ def _gather_original_medications() -> Dict[str, Medication]:
     return {m.name.lower(): m for m in db._medications.values()}
 
 
+def _gather_original_rdis() -> Dict[str, RDI]:
+    from blutwerte.foods.rdi import get_all_rdis
+    return get_all_rdis()
+
+
+def _gather_original_activities() -> Dict[str, Activity]:
+    from blutwerte.activities import load_activities
+    return load_activities(source="python")
+
+
+def _check_nutrients(rows: List[dict], originals: Dict[str, RDI]) -> List[str]:
+    errs = []
+    for r in rows:
+        name = (r.get("name") or "").lower()
+        if name and name not in originals:
+            errs.append(f"nutrient {r.get('id')!r} original {name!r} not in registry")
+    return errs
+
+
+def _check_activities(rows: List[dict], originals: Dict[str, Activity]) -> List[str]:
+    errs = []
+    for r in rows:
+        name = (r.get("name") or "").lower()
+        if name and name not in originals:
+            errs.append(f"activity {r.get('id')!r} original {name!r} not in registry")
+        if r.get("calories_per_hour") is None:
+            errs.append(f"activity {r.get('id')!r}: missing calories_per_hour")
+    return errs
+
+
 def main() -> int:
     print("=== round-trip test ===")
     errs: List[str] = []
@@ -134,11 +166,35 @@ def main() -> int:
         errs.extend(_check_food_nutrition(rows, fp))
     print(f"  total foods: {total_foods}")
 
+    # Nutrients
+    print("--- nutrients ---")
+    nut_path = REPO_ROOT / "knowledge" / "nutrients" / "nutrients.jsonl"
+    nuts = [json.loads(l) for l in nut_path.read_text(encoding="utf-8").splitlines() if l.strip()]
+    print(f"  loaded {len(nuts)} rows")
+    for i, n in enumerate(nuts, 1):
+        errs.extend(_check_required_fields("nutrient", n, i, nut_path))
+    errs.extend(_check_unique_ids("nutrient", nuts, nut_path))
+    orig_nuts = _gather_original_rdis()
+    errs.extend(_check_nutrients(nuts, orig_nuts))
+
+    # Activities
+    print("--- activities ---")
+    act_path = REPO_ROOT / "knowledge" / "activities" / "activities.jsonl"
+    acts = [json.loads(l) for l in act_path.read_text(encoding="utf-8").splitlines() if l.strip()]
+    print(f"  loaded {len(acts)} rows")
+    for i, a in enumerate(acts, 1):
+        errs.extend(_check_required_fields("activity", a, i, act_path))
+    errs.extend(_check_unique_ids("activity", acts, act_path))
+    orig_acts = _gather_original_activities()
+    errs.extend(_check_activities(acts, orig_acts))
+
     # Summary
     print("=== summary ===")
     print(f"  medications: {len(meds)}")
     print(f"  biomarkers:  {len(bms)}")
     print(f"  foods:       {total_foods}")
+    print(f"  nutrients:   {len(nuts)}")
+    print(f"  activities:  {len(acts)}")
     print(f"  errors:      {len(errs)}")
     if errs:
         print()

@@ -40,6 +40,7 @@ from blutwerte.medications.effects.dose_models import DoseEffectModel  # noqa: E
 from blutwerte.bloodtests.models import Biomarker              # noqa: E402
 from blutwerte.foods.models import Food                         # noqa: E402
 from blutwerte.foods.rdi import RDI                            # noqa: E402
+from blutwerte.activities.models import Activity               # noqa: E402
 
 SCHEMA_VERSION = 1
 
@@ -333,6 +334,54 @@ def migrate_nutrients(out_dir: Path, dry_run: bool = False) -> int:
 
 
 # ---------------------------------------------------------------------------
+# Activities
+# ---------------------------------------------------------------------------
+
+def _activity_to_row(act: Activity) -> Dict[str, Any]:
+    raw = to_jsonable(act)
+    raw["id"] = n1_id(act.name)
+    raw["schema_version"] = SCHEMA_VERSION
+    raw["source"] = "n1"
+    return raw
+
+
+def migrate_activities(out_dir: Path, dry_run: bool = False) -> int:
+    print("=== activities ===")
+    try:
+        module = importlib.import_module("blutwerte.activities.data.common_activities")
+    except Exception as exc:
+        print(f"  WARN  could not import activities module: {exc}")
+        return 0
+
+    activities: List[Activity] = []
+    for attr_name in dir(module):
+        if not attr_name.startswith("create_"):
+            continue
+        func = getattr(module, attr_name, None)
+        if not callable(func):
+            continue
+        try:
+            act = func()
+        except Exception as exc:
+            print(f"  WARN  {attr_name} failed: {exc}")
+            continue
+        if isinstance(act, Activity):
+            activities.append(act)
+
+    print(f"  collected {len(activities)} activities")
+
+    target = out_dir / "knowledge" / "activities" / "activities.jsonl"
+    if dry_run:
+        print(f"  DRY  would write {target} ({len(activities)} rows)")
+        return len(activities)
+
+    rows = [_activity_to_row(a) for a in sorted(activities, key=lambda a: a.name.lower())]
+    n = write_jsonl(target, rows)
+    print(f"  wrote {n} rows to {target}")
+    return n
+
+
+# ---------------------------------------------------------------------------
 # Driver
 # ---------------------------------------------------------------------------
 
@@ -340,7 +389,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.strip().splitlines()[0])
     parser.add_argument(
         "what",
-        choices=["medications", "biomarkers", "foods", "nutrients", "all"],
+        choices=["medications", "biomarkers", "foods", "nutrients", "activities", "all"],
     )
     parser.add_argument("--out", type=Path, default=REPO_ROOT,
                         help="Output directory (default: repo root)")
@@ -359,6 +408,8 @@ def main() -> int:
         counts["foods"] = migrate_foods(args.out, args.dry_run)
     if args.what in ("nutrients", "all"):
         counts["nutrients"] = migrate_nutrients(args.out, args.dry_run)
+    if args.what in ("activities", "all"):
+        counts["activities"] = migrate_activities(args.out, args.dry_run)
 
     print("=== summary ===")
     for k, v in counts.items():
